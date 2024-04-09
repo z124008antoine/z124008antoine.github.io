@@ -1,0 +1,21 @@
+{
+  "name": "project-name",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.5.10",
+    "@studio-freight/lenis": "^1.0.42",
+    "astro": "^4.5.13",
+    "astro-particles": "^2.10.0",
+    "gsap": "^3.12.5",
+    "tsparticles": "2.9.3",
+    "typescript": "^5.4.3"
+  }
+}

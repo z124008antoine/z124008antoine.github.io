@@ -1,0 +1,43 @@
+---
+import { ViewTransitions } from "astro:transitions";
+import NavBar from "../components/NavBar.astro";
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="[description]" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<ViewTransitions />
+	</head>
+	<body>
+		<NavBar />
+		<slot />
+	</body>
+	<script> import "../scripts/scroll"; </script>
+</html>
+
+<style>
+</style>
+
+<style is:global>
+	:root {
+		
+	}
+
+	* {
+		margin: 0;
+		box-sizing: border-box;
+	}
+</style>
+
