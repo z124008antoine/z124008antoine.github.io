@@ -1,0 +1,10 @@
+{
+    "nav": {
+        "home": "Portfolio",
+        "home-long": "Projets Majeurs",
+        "process": "Processus de Création",
+        "process-long": "Des Idées à la Réalité",
+        "about": "À Propos",
+        "about-long": "L'Humain derrière les pixels"
+    }
+}
