@@ -1,8 +1,9 @@
 ---
-import { ViewTransitions } from "astro:transitions";
+import { ViewTransitions, slide } from "astro:transitions";
 import i18next, { t } from "i18next";
 import { HeadHrefLangs } from "astro-i18next/components";
 import NavBar from "../components/NavBar.astro";
+import { textSpacing } from "../scripts/transitions";
 ---
 
 <!doctype html>
@@ -14,27 +15,72 @@ import NavBar from "../components/NavBar.astro";
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{t("meta.title")}</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<!-- to optimize later -->
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+			rel="stylesheet"
+		/>
 		<HeadHrefLangs />
 		<ViewTransitions />
 	</head>
 	<body>
 		<NavBar />
+		<h1 transition:animate={textSpacing}>
+			{t("meta.title-long")}
+		</h1>
 		<slot />
+		<script>
+			import "../scripts/scroll";
+		</script>
 	</body>
-	<script> import "../scripts/scroll"; </script>
+
+	<style is:global>
+		@import url("/src/styles/transitions.css");
+		@font-face {
+			font-family: "Roxie Rossa";
+			src:
+				url("/fonts/Roxie rossa.otf") format("opentype"),
+				url("/fonts/Roxie rossa.woff") format("woff"),
+				url("/fonts/Roxie rossa.ttf") format("truetype");
+		}
+
+		:root {
+			--color-text: #111;
+			--line-width: 0.1rem;
+			--background-1: #6d6c77;
+			--background-2: #8c9aa7;
+		}
+
+		* {
+			margin: 0;
+			box-sizing: border-box;
+		}
+
+		html,
+		body {
+			height: 100%;
+			overflow-x: hidden;
+		}
+
+		body {
+			color: var(--color-text);
+			background: linear-gradient(
+				25deg,
+				var(--background-1),
+				var(--background-2)
+			);
+			background-repeat: no-repeat;
+			background-size: cover;
+			font-family: "Montserrat", sans-serif;
+		}
+
+		h1 {
+			font-family: "Roxie Rossa", serif;
+			font-size: 5rem;
+			margin: 5rem 0;
+			text-align: center;
+		}
+	</style>
 </html>
-
-<style>
-</style>
-
-<style is:global>
-	:root {
-		
-	}
-
-	* {
-		margin: 0;
-		box-sizing: border-box;
-	}
-</style>
-

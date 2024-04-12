@@ -1,0 +1,43 @@
+/* @keyframes textShrink {
+    from {
+        letter-spacing: 0;
+        opacity: 1;
+    }
+    to {
+        letter-spacing: -0.4em; 
+        opacity: 0;
+    }
+}
+
+@keyframes textGrow {
+    from {
+        letter-spacing: -0.4em;
+        opacity: 0;
+    }
+    to {
+        letter-spacing: 0;
+        opacity: 1;
+    }
+} */
+
+@keyframes textShrink {
+    from {
+        transform: scaleX(1);
+        opacity: 1;
+    }
+    to {
+        transform: scaleX(.5);
+        opacity: 0;
+    }
+}
+
+@keyframes textGrow {
+    from {
+        transform: scaleX(.5);
+        opacity: 0;
+    }
+    to {
+        transform: scaleX(1);
+        opacity: 1;
+    }
+}

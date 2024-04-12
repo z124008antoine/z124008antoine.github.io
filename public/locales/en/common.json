@@ -1,10 +1,8 @@
 {
     "nav": {
-        "home": "Portfolio",
-        "home-long": "Portfolio Highlights",
-        "process": "Creative Process",
+        "process": "Process",
         "process-long": "From Ideas to Reality",
-        "about": "About Me",
+        "about": "Me",
         "about-long": "The Human Behind the Pixels"
     }
 }

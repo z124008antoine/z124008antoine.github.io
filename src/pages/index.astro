@@ -1,5 +1,5 @@
 ---
-import { changeLanguage, setDefaultNamespace } from "i18next";
+import { t, changeLanguage, setDefaultNamespace } from "i18next";
 import Layout from "../layouts/Layout.astro";
 
 changeLanguage("en");
@@ -7,7 +7,7 @@ setDefaultNamespace("home");
 ---
 
 <Layout>
-	<slot />
+	
 </Layout>
 
 <style>
