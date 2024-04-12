@@ -1,9 +1,12 @@
 ---
 import { t } from "i18next";
+import { localizePath } from "astro-i18next";
 ---
 
 <nav class="navigation">
-    <a href="/">{t("common:nav.home")}
+    <a href={localizePath("/")}>{t("common:nav.home")}</a>
+    <a href={localizePath("/process")}>{t("common:nav.process")}</a>
+    <a href={localizePath("/about")}>{t("common:nav.about")}</a>
 </nav>
 
 <style>
