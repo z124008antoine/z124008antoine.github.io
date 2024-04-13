@@ -26,18 +26,32 @@ projects.sort((a, b) => b.frontmatter.relevance - a.frontmatter.relevance);
     import { ScrollTrigger } from "gsap/ScrollTrigger";
     gsap.registerPlugin(ScrollTrigger);
 
-    // sub-sections that will be animated have more than one child
-    const subSections = gsap.utils.toArray(".long-section");
-    subSections.forEach((subSection) => {
-        gsap.to(subSection as HTMLElement, {
-            scrollTrigger: {
-                trigger: (subSection as HTMLElement).parentElement,
-                start: "top top",
-                end: "+=100%",
-                scrub: 1,
-                pin: true,
-            },
-            x: () => -((subSection as HTMLElement).children.length - 1) * 100 + "vw",
+    document.addEventListener('astro:page-load', () => {
+        // sub-sections that will be animated have more than one child
+        const subSections = gsap.utils.toArray(".long-section");
+        subSections.forEach((subSection) => {
+            const extra = (subSection as HTMLElement).children.length - 1;
+            const parent = (subSection as HTMLElement).parentElement;
+            gsap.to(subSection as HTMLElement, {
+                scrollTrigger: {
+                    trigger: parent,
+                    start: "top top",
+                    end: `+=${extra*100}%`,
+                    scrub: 1,
+                    pin: true,
+                },
+                x: () => extra * -100 + "vw",
+            });
+
+            gsap.to(".background-image", {
+                scrollTrigger: {
+                    trigger: parent,
+                    start: "top top",
+                    end: `+=${extra*100}%`,
+                    scrub: 2,
+                },
+                x: -200,
+            });
         });
     });
 </script>
@@ -49,6 +63,7 @@ projects.sort((a, b) => b.frontmatter.relevance - a.frontmatter.relevance);
     }
 	h2 {
         position: absolute;
+        z-index: 3;
         top: 7rem;
         left: 5vw;
         font-size: 5rem;
