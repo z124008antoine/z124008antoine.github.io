@@ -1,0 +1,77 @@
+---
+import { getCircularPosition } from '../scripts/utils';
+
+
+interface Props {
+  title?: string;
+  images: string[];
+}
+
+const { title, images = [] } = Astro.props;
+---
+
+<div class="sub-section">
+    {images.map((url: string, i: number) => (
+        <img
+            class="background-image"
+            src={url}
+            alt={"Image of " + title}
+            style={getCircularPosition(i, images.length, 5)} />
+    ))}
+    
+    <div class="info-box">
+        <h3>{title}</h3>
+        <p class="text">
+            <slot />
+        </p>
+    </div>
+</div>
+
+<style>
+    .sub-section {
+        position: relative;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    h3 {
+        position: absolute;
+        top: -1.5em;
+        left: -1.5em;
+        background-color: var(--background-1);
+        padding: 0.5em;
+        font-size: 1.5rem;
+        font-weight: 500;
+    }
+    .info-box {
+        position: relative;
+        width: min(92%, 25rem);
+    }
+    .text {
+        width: 100%;
+        padding: 1rem;
+        font-size: 1.2rem;
+        border: solid var(--line-width) var(--color-text);
+        background-color: var(--background-2);
+    }
+	h2 {
+        position: absolute;
+        top: 7rem;
+        left: 5vw;
+        font-size: 2.5rem;
+        font-weight: 500;
+        padding: .25em;
+        border: solid var(--line-width) var(--color-text);
+        width: fit-content;
+        background-color: var(--background-1);
+    }
+    img.background-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        max-width: max(30vw, 40vh);
+        max-height: max(25vw, 35vh);
+        z-index: -1;
+    }
+</style>

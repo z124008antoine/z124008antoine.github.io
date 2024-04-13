@@ -25,18 +25,20 @@ const pathname = Astro.site?.pathname
 
 <style>
     .navigation {
+        position: sticky;
+        top: calc(-1 * var(--line-width));
         display: grid;
         width: clamp(20rem, 40rem, 100%);
-        margin: 0 auto;
+        margin: 1rem auto;
         grid-template-columns: repeat(3, 1fr);
         justify-items: center;
         align-items: center;
         column-gap: 1rem;
 
         border: solid var(--line-width) var(--color-text);
-        border-top: 0;
         overflow: hidden;
         background-color: #bab9c0;
+        z-index: 5;
     }
 
     .navigation a {

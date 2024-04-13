@@ -30,10 +30,11 @@ import { textSpacing } from "../scripts/transitions";
 		<h1 transition:animate={textSpacing}>
 			{t("meta.title-long")}
 		</h1>
-		<slot />
 		<script>
 			import "../scripts/scroll";
 		</script>
+		<slot />
+		
 	</body>
 
 	<style is:global>
@@ -49,8 +50,8 @@ import { textSpacing } from "../scripts/transitions";
 		:root {
 			--color-text: #111;
 			--line-width: 0.1rem;
-			--background-1: #6d6c77;
-			--background-2: #8c9aa7;
+			--background-1: #76767e;
+			--background-2: #98a0a8;
 		}
 
 		* {
@@ -60,8 +61,7 @@ import { textSpacing } from "../scripts/transitions";
 
 		html,
 		body {
-			height: 100%;
-			overflow-x: hidden;
+			min-height: 100%;
 		}
 
 		body {
@@ -79,7 +79,7 @@ import { textSpacing } from "../scripts/transitions";
 		h1 {
 			font-family: "Roxie Rossa", serif;
 			font-size: 5rem;
-			margin: 5rem 0;
+			margin: 8rem 0;
 			text-align: center;
 		}
 	</style>

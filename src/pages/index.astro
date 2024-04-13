@@ -1,15 +1,65 @@
 ---
-import { t, changeLanguage, setDefaultNamespace } from "i18next";
+import { changeLanguage, setDefaultNamespace } from "i18next";
 import Layout from "../layouts/Layout.astro";
+import { fade } from "astro:transitions";
 
 changeLanguage("en");
 setDefaultNamespace("home");
+
+const projects = await Astro.glob("../content/projects/*.mdx");
+projects.sort((a, b) => b.frontmatter.relevance - a.frontmatter.relevance);
 ---
 
 <Layout>
-	
+	{projects.map((project) => (
+        <section class="project">
+            <h2 transition:animate={fade()}>{project.frontmatter.title}</h2>
+            <div class:list={["sub-sections", { "long-section": project.frontmatter.nbSections > 1}]}>
+                <project.Content />
+            </div>
+        </section>
+    ))}
 </Layout>
 
+<script>
+    import gsap from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+    gsap.registerPlugin(ScrollTrigger);
+
+    // sub-sections that will be animated have more than one child
+    const subSections = gsap.utils.toArray(".long-section");
+    subSections.forEach((subSection) => {
+        gsap.to(subSection as HTMLElement, {
+            scrollTrigger: {
+                trigger: (subSection as HTMLElement).parentElement,
+                start: "top top",
+                end: "+=100%",
+                scrub: 1,
+                pin: true,
+            },
+            x: () => -((subSection as HTMLElement).children.length - 1) * 100 + "vw",
+        });
+    });
+</script>
+
 <style>
-	
+    section {
+        position: relative;
+        height: 100vh;
+    }
+	h2 {
+        position: absolute;
+        top: 7rem;
+        left: 5vw;
+        font-size: 5rem;
+        font-weight: 400;
+        width: fit-content;
+        font-family: "Roxie Rossa", serif;
+    }
+    .sub-sections {
+        display: flex;
+        flex-direction: row;
+        width: fit-content;
+        height: 100%;
+    }
 </style>
