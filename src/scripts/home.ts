@@ -8,7 +8,6 @@ document.addEventListener('astro:page-load', () => {
     contents.forEach((content) => {
         const c = content as HTMLElement;
         const extraWidth = () => c.offsetWidth - window.innerWidth;
-        console.log(extraWidth);
         if (extraWidth() < 10) {
             return; // skip if content is not wider than the screen
         }
@@ -29,19 +28,19 @@ document.addEventListener('astro:page-load', () => {
         gsap.to(title as HTMLElement, {
             scrollTrigger: {
                 trigger: title as HTMLElement,
-                start: "bottom 10%",
-                end: `+=${extraWidth()} bottom`,
+                start: "top 60px",
+                end: `+=${extraWidth()}`,
                 endTrigger: c,
                 toggleActions: "restart none none reverse",
             },
-            scale: 1.5,
-            duration: 0.6,
+            duration: 0.4,
             ease: "power1.inOut",
-            bottom: "1rem",
+            bottom: "4rem",
+            scale: 1.2,
         });
 
         // HTMLCollection to Array
-        const children = Array.from(c.children);
+        /* const children = Array.from(c.children);
         children.forEach((child) => {
             if (child.classList.contains("image-wrap"))
                 return;
@@ -56,6 +55,6 @@ document.addEventListener('astro:page-load', () => {
                 ease: "none",
                 x: -extraWidth()/5,
             });
-        });
+        }); */
     });
 });

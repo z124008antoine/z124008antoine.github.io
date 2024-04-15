@@ -37,12 +37,15 @@ projects.sort((a, b) => b.frontmatter.relevance - a.frontmatter.relevance);
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
-        font-size: 3rem;
+        border: solid var(--line-width) var(--color-text);
+        z-index: 4;
+        font-size: 2rem;
         text-align: center;
-        margin: auto;
         font-weight: 400;
         width: fit-content;
         font-family: "Roxie Rossa", serif;
+        background-color: var(--background-1);
+        padding: .5rem 1rem;
     }
     .content {
         margin-top: 4rem;
