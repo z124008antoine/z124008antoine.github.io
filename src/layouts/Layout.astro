@@ -4,6 +4,7 @@ import i18next, { t } from "i18next";
 import { HeadHrefLangs } from "astro-i18next/components";
 import NavBar from "../components/NavBar.astro";
 import { textSpacing } from "../scripts/transitions";
+import Separator from "../components/Separator.astro";
 ---
 
 <!doctype html>
@@ -30,13 +31,12 @@ import { textSpacing } from "../scripts/transitions";
 		<h1 transition:animate={textSpacing}>
 			{t("meta.title-long")}
 		</h1>
+		
+		<slot />
+
 		<script>
 			import "../scripts/scroll";
-
-			
 		</script>
-		<slot />
-		
 	</body>
 
 	<style is:global>
@@ -52,8 +52,8 @@ import { textSpacing } from "../scripts/transitions";
 		:root {
 			--color-text: #111;
 			--line-width: 0.1rem;
-			--background-1: #76767e;
-			--background-2: #98a0a8;
+			--background-1: #96969c;
+			--background-2: #d2d3d4;
 		}
 
 		* {
@@ -65,26 +65,20 @@ import { textSpacing } from "../scripts/transitions";
 		body {
 			min-height: 100%;
 			width: 100vw;
-			overflow-x: hidden;
 		}
 
 		body {
 			color: var(--color-text);
-			background: linear-gradient(
-				25deg,
-				var(--background-1),
-				var(--background-2)
-			);
+			background: var(--background-2);
 			background-repeat: no-repeat;
 			background-size: cover;
 			font-family: "Montserrat", sans-serif;
-			
 		}
 
 		h1 {
 			font-family: "Roxie Rossa", serif;
 			font-size: 5rem;
-			margin: 8rem 0;
+			margin-top: 8rem;
 			text-align: center;
 		}
 

@@ -11,19 +11,32 @@ const { src, alt, big=false } = Astro.props;
 <style>
     .image-wrap {
         position: relative;
-        width: 100%;
-        height: 100%;
-        max-width: 50vw;
-        max-height: 50vh;
+        width: min(90vw, 35rem);
+        height: min(40vh, 30rem);
+        margin: auto;
+        display: flex;
+        justify-content: center;
     }
+    
     .image-wrap.big {
         grid-row: span 2;
+        width: unset;
+        height: min(80vh, 40rem);
         max-width: 70vw;
-        max-height: 70vh;
     }
+
+    /* on vertical screens */
+    @media screen and (orientation: portrait) {
+        .image-wrap.big {
+            max-width: 180vw;
+            max-height: 90vh;
+        }
+    }
+
     img {
-        width: 100%;
         height: 100%;
+        width: 100%;
         object-fit: contain;
+        transform: translateX(10rem);
     }
 </style>

@@ -1,0 +1,15 @@
+---
+const { height = "10rem" } = Astro.props;
+---
+
+<hr style={`height: ${height};`} />
+
+<style>
+    hr {
+        /* vertical */
+        width: var(--line-width);
+        border: none;
+        background-color: var(--color-text);
+        margin: 2rem auto;
+    }
+</style>
