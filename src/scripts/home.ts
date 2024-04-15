@@ -35,7 +35,7 @@ document.addEventListener('astro:page-load', () => {
             },
             duration: 0.4,
             ease: "power1.inOut",
-            bottom: "4rem",
+            bottom: "1rem",
             scale: 1.2,
         });
 

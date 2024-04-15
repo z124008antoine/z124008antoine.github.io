@@ -16,6 +16,7 @@ const { src, alt, big=false } = Astro.props;
         margin: auto;
         display: flex;
         justify-content: center;
+        z-index: -1;
     }
     
     .image-wrap.big {
@@ -37,6 +38,5 @@ const { src, alt, big=false } = Astro.props;
         height: 100%;
         width: 100%;
         object-fit: contain;
-        transform: translateX(10rem);
     }
 </style>
