@@ -14,7 +14,7 @@ projects.sort((a, b) => b.frontmatter.relevance - a.frontmatter.relevance);
 	{projects.map((project) => (
         <section class="project">
             <h2 transition:animate={fade()}>{project.frontmatter.title}</h2>
-            <div class:list={["sub-sections", { "long-section": project.frontmatter.nbSections > 1}]}>
+            <div class="content">
                 <project.Content />
             </div>
         </section>
@@ -28,30 +28,42 @@ projects.sort((a, b) => b.frontmatter.relevance - a.frontmatter.relevance);
 
     document.addEventListener('astro:page-load', () => {
         // sub-sections that will be animated have more than one child
-        const subSections = gsap.utils.toArray(".long-section");
-        subSections.forEach((subSection) => {
-            const extra = (subSection as HTMLElement).children.length - 1;
-            const parent = (subSection as HTMLElement).parentElement;
-            gsap.to(subSection as HTMLElement, {
+        const contents = gsap.utils.toArray(".content");
+        contents.forEach((content) => {
+            const c = content as HTMLElement;
+            const extraWidth = c.offsetWidth - window.innerWidth;
+            if (extraWidth < 0) {
+                return; // skip if content is not wider than the screen
+            }
+            const parent = c.parentElement;
+            gsap.to(c, {
                 scrollTrigger: {
                     trigger: parent,
                     start: "top top",
-                    end: `+=${extra*100}%`,
-                    scrub: 1,
+                    end: `+=${extraWidth}px top`,
+                    scrub: 0.5,
                     pin: true,
                 },
-                x: () => extra * -100 + "vw",
+                ease: "none",
+                x: () => -(extraWidth),
             });
 
-            gsap.to(".background-image", {
-                scrollTrigger: {
-                    trigger: parent,
-                    start: "top top",
-                    end: `+=${extra*100}%`,
-                    scrub: 2,
-                },
-                x: -200,
-            });
+            /* const children = new Array(c.children);
+            children.forEach((child) => {
+                gsap.to(child, {
+                    scrollTrigger: {
+                        trigger: child,
+                        start: "center center",
+                        endTrigger: child,
+                        end: "+=" + extraWidth,
+                        scrub: 2,
+                        markers: true,
+                    },
+                    stagger: 1,
+                    ease: "none",
+                    x: -150,
+                });
+            }); */
         });
     });
 </script>
@@ -62,19 +74,23 @@ projects.sort((a, b) => b.frontmatter.relevance - a.frontmatter.relevance);
         height: 100vh;
     }
 	h2 {
-        position: absolute;
         z-index: 3;
-        top: 7rem;
-        left: 5vw;
         font-size: 5rem;
         font-weight: 400;
         width: fit-content;
         font-family: "Roxie Rossa", serif;
     }
-    .sub-sections {
-        display: flex;
-        flex-direction: row;
-        width: fit-content;
-        height: 100%;
+    .content {
+        position: relative;
+        display: grid;
+        grid-template-rows: repeat(2, 45%);
+        grid-auto-flow: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: max-content;
+        row-gap: 2rem;
+        column-gap: 5rem;
+        padding: 4rem 2rem;
     }
 </style>

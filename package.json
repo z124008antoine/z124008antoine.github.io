@@ -14,9 +14,12 @@
     "@astrojs/mdx": "^2.3.0",
     "@studio-freight/lenis": "^1.0.42",
     "astro": "^4.5.13",
+    "astro-better-image-service": "^1.0.9",
     "astro-i18next": "^1.0.0-beta.21",
+    "astro-lazy-youtube-embed": "^0.4.0",
     "astro-particles": "^2.10.0",
     "gsap": "^3.12.5",
+    "simplelightbox": "^2.14.3",
     "typescript": "^5.4.3"
   }
 }

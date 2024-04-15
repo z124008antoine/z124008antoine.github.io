@@ -5,10 +5,23 @@ group-size: 4
 begin-date: 2022-12-01
 end-date: 2023-06-02
 link: https://hermita-game.github.io/
-nbSections: 2
 ---
-import ProjectSection from '../../components/ProjectSection.astro';
+import ProjectText from '../../components/home/ProjectText.astro';
+import ProjectImage from '../../components/home/ProjectImage.astro';
+import { Image } from 'astro:assets';
 
-<ProjectSection title="Summary" images={["https://s6.imgcdn.dev/WG5Jy.png", "https://s6.imgcdn.dev/WGy99.png"]}>Hermita is a school project I worked on with three other students. We developed a game in C# using Unity. Hermita was quite an ambitious project but it was very pleasant to work on and I was able to learn a lot from it.</ProjectSection>
+<ProjectText title="Summary">Hermita is a school project I worked on with three other students. We developed a game in C# using Unity. Hermita was quite an ambitious project but it was very pleasant to work on and I was able to learn a lot from it. We were asked to create a multiplayer game with a rather open theme. We used this opportunity to build a game that would actually be fun to play. </ProjectText>
 
-<ProjectSection title="The game itself" images={["https://s6.imgcdn.dev/WG5Jy.png", "https://s6.imgcdn.dev/WGy99.png"]}>Hermita is a school project I worked on with three other students. We developed a game in C# using Unity. Hermita was quite an ambitious project but it was very pleasant to work on and I was able to learn a lot from it.</ProjectSection>
+import hermitalogo from '../../assets/hermita/hermitalogo.png';
+import hermitafight from '../../assets/hermita/hermitafight.png';
+
+<ProjectImage src={hermitalogo} alt="Logo of the game Hermita" />
+<ProjectImage src={hermitafight} alt="Screenshot of the game Hermita" />
+
+<ProjectText title="The game itself">Hermita is a school project I worked on with three other students. We developed a game in C# using Unity. Hermita was quite an ambitious project but it was very pleasant to work on and I was able to learn a lot from it.</ProjectText>
+
+import hermitawebsite from '../../assets/hermita/hermitawebsite.png';
+
+<ProjectImage big src={hermitawebsite} alt="Screenshot of the website of the game Hermita" />
+
+<ProjectText title="The game itself">Hermita is a school project I worked on with three other students. We developed a game in C# using Unity. Hermita was quite an ambitious project but it was very pleasant to work on and I was able to learn a lot from it.</ProjectText>

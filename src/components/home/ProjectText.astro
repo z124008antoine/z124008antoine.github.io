@@ -1,26 +1,10 @@
 ---
-import { getCircularPosition } from '../scripts/utils';
-
-
-interface Props {
-  title?: string;
-  images: string[];
-}
-
-const { title, images = [] } = Astro.props;
+const { title, big=false } = Astro.props;
 ---
 
-<div class="sub-section">
-    {images.map((url: string, i: number) => (
-        <img
-            class="background-image"
-            src={url}
-            alt={"Image of " + title}
-            style={getCircularPosition(i, images.length, 5)} />
-    ))}
-    
+<div class:list={["wrap", {big}]}>
     <div class="info-box">
-        <h3>{title}</h3>
+        {() => title ? <h3>{title}</h3> : null}
         <p class="text">
             <slot />
         </p>
@@ -28,17 +12,22 @@ const { title, images = [] } = Astro.props;
 </div>
 
 <style>
-    .sub-section {
+    .wrap {
         position: relative;
-        width: 100vw;
         display: flex;
         justify-content: center;
         align-items: center;
+        width: min(92vw, 25rem);
+        height: 80%;
+        margin: auto;
+    }
+    .wrap.big {
+        grid-row: span 2;
     }
     h3 {
         position: absolute;
         top: -1.5em;
-        left: -1.5em;
+        left: -.5em;
         background-color: var(--background-1);
         padding: 0.5em;
         font-size: 1.5rem;
@@ -46,14 +35,18 @@ const { title, images = [] } = Astro.props;
     }
     .info-box {
         position: relative;
-        width: min(92%, 25rem);
+        width: 100%;
+        height: 80%;
     }
     .text {
+        display: block;
         width: 100%;
         padding: 1rem;
         font-size: 1.2rem;
         border: solid var(--line-width) var(--color-text);
         background-color: var(--background-2);
+        max-height: 70vh;
+        overflow-y: auto;
     }
 	h2 {
         position: absolute;
