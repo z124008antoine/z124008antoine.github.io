@@ -5,6 +5,7 @@ import { HeadHrefLangs } from "astro-i18next/components";
 import NavBar from "../components/NavBar.astro";
 import { textSpacing } from "../scripts/transitions";
 import Separator from "../components/Separator.astro";
+import Transition from "../components/Transition.astro";
 ---
 
 <!doctype html>
@@ -33,6 +34,8 @@ import Separator from "../components/Separator.astro";
 		</h1>
 		
 		<slot />
+
+		<Transition />
 
 		<script>
 			import "../scripts/scroll";

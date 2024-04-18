@@ -1,4 +1,4 @@
-const anim = {
+const textAnim = {
     old: {
         name: 'textShrink',
         duration: '0.2s',
@@ -14,6 +14,26 @@ const anim = {
 };
 
 export const textSpacing = {
-    forwards: anim,
-    backwards: anim,
+    forwards: textAnim,
+    backwards: textAnim,
+};
+
+const circleAnim = {
+    old: {
+        name: 'circleIn',
+        duration: '.5s',
+        easing: 'ease-in',
+        fillMode: 'forwards',
+    },
+    new: {
+        name: 'circleOut',
+        duration: '0.5s',
+        easing: 'ease-out',
+        fillMode: 'backwards',
+    }
+};
+
+export const circleAnimation = {
+    forwards: circleAnim,
+    backwards: circleAnim,
 };
