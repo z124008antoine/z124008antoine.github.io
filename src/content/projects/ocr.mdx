@@ -1,5 +1,5 @@
 ---
-title: Optical Character Recognition
+title: Sudoku Solver
 relevance: 50
 group-size: 4
 begin-date: 2023-09-01
@@ -10,3 +10,19 @@ link:
 import ProjectText from '../../components/home/ProjectText.astro';
 import ProjectImage from '../../components/home/ProjectImage.astro';
 
+<ProjectText title="Summary"> This was one of the school projects for EPITA. We had to create an application in C to solve sudoku grids. However, the challenge was not to compute the solution but to extract the grid information from a picture. We weren't allowed to use any external library so we had to code everything from scratch. </ProjectText>
+
+import unsolved from '../../assets/ocr/unsolved.png';
+import edges from '../../assets/ocr/edges.png';
+import lines from '../../assets/ocr/lines.png';
+
+<ProjectImage src={unsolved} alt="An unsolved sudoku grid" />
+<ProjectImage src={edges} alt="Edges of the sudoku grid" />
+<ProjectImage src={lines} alt="Detected lines of the sudoku grid" />
+
+<ProjectText big title="My contribution">I was in charge of the processing of the image: finding edges, detecting the grid and extracting a flat image. This was a very challenging part because an image can be noisy, blurry, or have a bad contrast and the grid can be rotated, skewed, or have a perspective. With all of that, I had to implement a [Canny edge detector](https://en.wikipedia.org/wiki/Canny_edge_detector), a [Hough transform](https://en.wikipedia.org/wiki/Hough_transform) and a [perspective correction](https://en.wikipedia.org/wiki/Transformation_matrix#Perspective_projection). It was a lot of thinking, a lot of maths and a lot of trying (I loved it!). In the end, my team members were quite inactive and only did the interface. Thus, I also had to work on the neural network in charge of recognizing the digits. Without any library, the task was actually easier than I thought but I found it fascinating what a bit of maths can do.</ProjectText>
+
+
+import solved from '../../assets/ocr/solved.png';
+
+<ProjectImage big src={solved} alt="solved flat image of the sudoku grid" />

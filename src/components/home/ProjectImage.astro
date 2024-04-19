@@ -2,9 +2,11 @@
 import { Image } from "astro:assets";
 
 const { src, alt, big=false } = Astro.props;
+
+const xShift = (Math.random() - 0.5) * 80;
 ---
 
-<div class:list={["image-wrap", {big}]}>
+<div class:list={["image-wrap", {big}]} style={{transform: `translateX(${xShift}px)`}}>
     <Image {src} {alt} />
 </div>
 
