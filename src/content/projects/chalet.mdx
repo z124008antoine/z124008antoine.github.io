@@ -1,28 +1,32 @@
 ---
-title: Blumenroeder Website
-relevance: 70
-group-size: 4
+title: A chalet
+relevance: 60
+group-size: 15
 begin-date: 2022-12-01
 end-date: 2023-06-02
-link: https://hermita-game.github.io/
+link: https://antoineblu.github.io/jansiac/
 ---
 
 import ProjectText from '../../components/home/ProjectText.astro';
 import ProjectImage from '../../components/home/ProjectImage.astro';
+import ProjectVideo from '../../components/home/ProjectVideo.astro';
 
-<ProjectText title="Context">My father is the owner of company that builds pipe organs. Altough he already had a website, it had major issues. The website was very old, not responsive and to update its content, they had to code in html everytime. I gave it a try and first gave up because of the size of the task.</ProjectText>
+import fire from '../../assets/chalet/fire.jpg';
 
-import greatroom from '../../assets/blum/greatroom.jpg';
-import former from '../../assets/blum/former.png';
+<ProjectImage src={fire} alt="The fire that destroyed the chalet" />
 
-<ProjectImage src={greatroom} alt="Great room of the Blumenroeder Workshop" />
-<ProjectImage src={former} alt="Screenshot of the former website" />
+<ProjectText title="Summary">Did you expect IT projects only? No, I also practiced my skills on original projects and this is one of them. My grandparents created a community in the french alps during the 70s. They both passed away but the community is still alive. Unfortunately, it went through two consecutive fires that destroyed 2 housings and a lot of land. One evening, thinking about this, I came up with the idea of building a brand new one.</ProjectText>
 
-<ProjectText title="1st try">A little bit later, I created a navigation menu for fun. Then, came motivation and I dived into the project. The task was interesting, I implemented a simple administration page with a [WYSIWYG](https://ckeditor.com/ckeditor-5/demo/feature-rich/) editor for each page. It is worth noting that I barely used any library and I coded almost everything from scratch.</ProjectText>
+<ProjectText title="The realization">Still a teen, I was not so aware of the difficulties and got told that it was a crazy idea. But I didn't give up and started looking for already-built chalets that we would just have to move. Next thing I knew, I was in a small town in the south of France, disassembling a chalet with family and friends. Right before leaving, I quickly programmed a little website to present the project and ask for help. This website ended up being a way to update the people who donated or were interested in the project. You can visit it [here](https://antoineblu.github.io/jansiac/).</ProjectText>
 
-<ProjectText title="Final result">After a while, I was unsatisfied with the website. It was not optimal for SEO and I had kept the old navigation hierarchy with 28 pages. Thus, I built everything again from scratch. This time, I used libraries like [Strapi](https://strapi.io/), [Locomotive Scroll](https://locomotivemtl.github.io/locomotive-scroll/) and [Svelte](https://svelte.dev/). The website is now much faster, easier to maintain, translated in 3 different languages and the user experience is much smoother.</ProjectText>
+import disassemble from '../../assets/chalet/disassemble.jpg';
+import chalet from '../../assets/chalet/chalet.jpg';
 
+<ProjectImage src={disassemble} alt="Disassembling the chalet" />
+<ProjectImage src={chalet} alt="The mountain chalet" />
 
-import screenshot1 from '../../assets/blum/screenshot1.png';
+<ProjectText title="Time">The project should've taken about a week but in reality it took much more... Disassembling took longer, so after a week, we only had the foundations of the chalet in its new location. People had to go back to their lives so we had to wait for the next holidays to continue. And it was still not enough the second time! But we did things the right way and a year after the start, the chalet was finally ready to be used after our third intervention.</ProjectText>
 
-<ProjectImage src={screenshot1} alt="Screenshot of the new website" />
+<ProjectText title="Conclusion">I am so thankful for everything I learned during this project. I was surrounded by experienced adults who took time to explain me everything and who trusted me. Surprisingly, I also learned about leading because I found myself in situations where I had to make decisions and adults were waiting orders from me. It's something I didn't expect at all because I was lacking so much experience but they gave me this wonderful opportunity with their trust and patience.</ProjectText>
+
+<ProjectVideo id="v3SpP-3fqgw" />
