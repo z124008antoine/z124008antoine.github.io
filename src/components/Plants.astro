@@ -16,13 +16,13 @@ import tiny5 from '../assets/decorations/plants/tiny-5.png';
 
 const positions: { src: ImageMetadata, style: string, className: string }[] = [
     // bottom left
-    { src: big3, style: 'left: 5%; bottom: -3%;', className: "big" },
-    { src: big2, style: 'left: -4%; bottom: -2%;', className: "big" },
+    { src: big3, style: 'left: 5%; bottom: -3%;', className: "big rotate-left" },
+    { src: big2, style: 'left: -4%; bottom: -2%;', className: "big rotate-left" },
     
     // bottom right
     { src: small1, style: 'right: -2%; bottom: 20%;', className: "small" },
-    { src: big1, style: 'right: min(10%, 5rem); bottom: -3%;', className: "big" },
-    { src: big4, style: 'right: -2%; bottom: -5%;', className: "big" },
+    { src: big1, style: 'right: min(10%, 5rem); bottom: -3%;', className: "big rotate-right" },
+    { src: big4, style: 'right: -2%; bottom: -5%;', className: "big rotate-right" },
     
     // floating left
     { src: tiny1, style: 'left: 10%; bottom: 30%;', className: "tiny" },
@@ -43,6 +43,30 @@ const positions: { src: ImageMetadata, style: string, className: string }[] = [
     />
 ))}
 
+<script>
+    document.addEventListener('astro:page-load', () => {
+        const scrollTrigger = {
+            trigger: 'header',
+            start: 'top 100',
+            end: 'bottom top',
+            scrub: 1,
+        };
+        gsap.to('.rotate-left', {
+            scrollTrigger,
+            rotate: () => -25,
+        });
+        gsap.to('.rotate-right', {
+            scrollTrigger,
+            rotate: () => 25,
+        });
+        gsap.to('.tiny, .small', {
+            scrollTrigger,
+            y: () => -Math.random() * 300,
+            rotate: () => Math.random() * 360,
+        });
+    });
+</script>
+
 <style>
     .plant {
         position: absolute;
@@ -59,5 +83,11 @@ const positions: { src: ImageMetadata, style: string, className: string }[] = [
     .plant.tiny {
         max-height: min(10vw, 4rem);
         max-width: min(10vw, 4rem);
+    }
+    .plant.rotate-left {
+        transform-origin: bottom right;
+    }
+    .plant.rotate-right {
+        transform-origin: bottom left;
     }
 </style>

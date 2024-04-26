@@ -12,12 +12,13 @@ document.addEventListener('astro:page-load', () => {
             scrollTrigger: {
                 trigger: parent,
                 start: "top 46",
-                end: `+=${extraWidth}px top`,
+                end: () => `+=${c.offsetWidth - window.innerWidth}px top`,
                 scrub: 0.5,
                 pin: true,
+                invalidateOnRefresh: true,
             },
             ease: "none",
-            x: -extraWidth,
+            x: () => window.innerWidth - c.offsetWidth,
         });
     });
 });

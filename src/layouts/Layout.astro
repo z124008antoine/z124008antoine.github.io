@@ -7,6 +7,7 @@ import { textSpacing } from "../scripts/transitions";
 import Separator from "../components/Separator.astro";
 import PageTransition from "../components/PageTransition.astro";
 import Plants from "../components/Plants.astro";
+import Scroll from "../components/Scroll.astro";
 ---
 
 <!DOCTYPE html>
@@ -25,20 +26,26 @@ import Plants from "../components/Plants.astro";
 			href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
 			rel="stylesheet"
 		/>
+		<script>
+			// make sure that astro is not triggered when the scrollend event is fired
+			window.addEventListener('scrollend', (e) => {
+				e.stopImmediatePropagation();
+			});
+			</script>
 		<HeadHrefLangs />
 		<ViewTransitions />
 	</head>
 	<body>
 		<script>
 			import gsap from "gsap";
-			import { ScrollTrigger } from "gsap/ScrollTrigger";
+			import ScrollTrigger from "gsap/ScrollTrigger";
 			gsap.registerPlugin(ScrollTrigger);
 			window.gsap = gsap;
 			window.ScrollTrigger = ScrollTrigger;
 		</script>
 		
 		<NavBar transition:persist />
-
+		
 		<!--
 			Header, common to every page
 			It takes up the full height of the viewport
@@ -48,18 +55,16 @@ import Plants from "../components/Plants.astro";
 				{t("meta.title-long")}
 			</h1>
 			<Separator />
-			<Plants />
+			<Plants transition:persist />
 		</header>
 		
 		<main transition:animate={fade({duration: 1000})}>
 			<slot />
 		</main>
-
+		
 		<PageTransition transition:persist />
-
-		<script>
-			import '../scripts/scroll';
-		</script>
+		
+		<Scroll />
 	</body>
 
 	<style is:global>
@@ -104,9 +109,14 @@ import Plants from "../components/Plants.astro";
 
 		h1 {
 			font-family: "Roxie Rossa", serif;
-			font-size: 5rem;
+			font-size: 4rem;
 			text-align: center;
-			z-index: 99;
+			z-index: 5;
+		}
+		@media screen and (min-width: 1000px) {
+			h1 {
+				font-size: 6rem;
+			}
 		}
 
 		header {
