@@ -1,21 +1,22 @@
 ---
 import { t } from "i18next";
 import { localizePath } from "astro-i18next";
-import { slide } from "astro:transitions";
 
+// Pages to display in the navigation
 const pages = [
     { path: localizePath("/"), title: t("home:meta.title") },
     { path: localizePath("/process"), title: t("common:nav.process") },
     { path: localizePath("/about"), title: t("common:nav.about") },
 ];
 
-const pathname = Astro.site?.pathname
+// Current page pathname
+const pathname = Astro.site?.pathname;
 ---
 
 <nav class="navigation">
+    <!-- Loop through the pages and create a link for each one -->
     {pages.map((page, i) => (
         <a
-            transition:animate={slide({ duration: 500 + 200*i })}
             href={page.path}
             class:list={[{"current-page": page.path === pathname}]}>
             {page.title}
@@ -24,9 +25,14 @@ const pathname = Astro.site?.pathname
 </nav>
 
 <style>
+    :root {
+        --nav-height: 63px;
+        --full-nav-height: 94px;
+    }
+
     .navigation {
         position: sticky;
-        top: calc(-1 * var(--line-width));
+        top: 0;
         display: grid;
         width: clamp(20rem, 40rem, 100%);
         margin: 1rem auto;
@@ -35,17 +41,16 @@ const pathname = Astro.site?.pathname
         align-items: center;
         column-gap: 1rem;
 
-        border: solid var(--line-width) var(--color-text);
         overflow: hidden;
-        background-color: var(--background-1);
+        background-color: var(--primary-color);
         z-index: 5;
     }
 
     .navigation a {
         text-decoration: none;
-        color: var(--color-text);
-        font-size: 1.4rem;
-        padding: .75em;
+        color: var(--text-color-bright);
+        font-size: 1.2rem;
+        padding: 1em;
         text-align: center;
         transition: .2s ease-in-out;
         transition: letter-spacing transform;

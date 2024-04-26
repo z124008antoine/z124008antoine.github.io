@@ -1,9 +1,3 @@
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
-
-import { lenis } from './scroll';
-
 document.addEventListener('astro:page-load', () => {
     // sub-sections that will be animated when they are bigger than the screen width
     const contents = gsap.utils.toArray(".content");
@@ -17,7 +11,7 @@ document.addEventListener('astro:page-load', () => {
         gsap.to(c, {
             scrollTrigger: {
                 trigger: parent,
-                start: "top 2.9rem",
+                start: "top 46",
                 end: `+=${extraWidth}px top`,
                 scrub: 0.5,
                 pin: true,
@@ -25,20 +19,5 @@ document.addEventListener('astro:page-load', () => {
             ease: "none",
             x: -extraWidth,
         });
-
-        /* const title = c.previousElementSibling as HTMLElement;
-        gsap.to(title as HTMLElement, {
-            scrollTrigger: {
-                trigger: title as HTMLElement,
-                start: "top 60px",
-                end: `+=${extraWidth()}`,
-                endTrigger: c,
-                toggleActions: "restart none none reverse",
-            },
-            duration: 0.4,
-            ease: "power1.inOut",
-            bottom: "1rem",
-            scale: 1.2,
-        }); */
     });
 });

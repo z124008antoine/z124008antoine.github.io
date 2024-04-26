@@ -1,0 +1,63 @@
+---
+// This component is meant to be used inside a page size container with position relative
+import { Image } from 'astro:assets';
+
+import big1 from '../assets/decorations/plants/big-1.png';
+import big2 from '../assets/decorations/plants/big-2.png';
+import big3 from '../assets/decorations/plants/big-3.png';
+import big4 from '../assets/decorations/plants/big-4.png';
+
+import small1 from '../assets/decorations/plants/small-1.png';
+
+import tiny1 from '../assets/decorations/plants/tiny-1.png';
+import tiny3 from '../assets/decorations/plants/tiny-3.png';
+import tiny4 from '../assets/decorations/plants/tiny-4.png';
+import tiny5 from '../assets/decorations/plants/tiny-5.png';
+
+const positions: { src: ImageMetadata, style: string, className: string }[] = [
+    // bottom left
+    { src: big3, style: 'left: 5%; bottom: -3%;', className: "big" },
+    { src: big2, style: 'left: -4%; bottom: -2%;', className: "big" },
+    
+    // bottom right
+    { src: small1, style: 'right: -2%; bottom: 20%;', className: "small" },
+    { src: big1, style: 'right: min(10%, 5rem); bottom: -3%;', className: "big" },
+    { src: big4, style: 'right: -2%; bottom: -5%;', className: "big" },
+    
+    // floating left
+    { src: tiny1, style: 'left: 10%; bottom: 30%;', className: "tiny" },
+    { src: tiny5, style: 'left: 30%; bottom: 15%;', className: "tiny" },
+
+    // floating right
+    { src: tiny3, style: 'right: 15%; bottom: 25%;', className: "tiny" },
+    { src: tiny4, style: 'right: 30%; bottom: 8%;', className: "tiny" },
+]
+---
+
+{positions.map(({ src, style, className }) => (
+    <Image
+        src={src}
+        alt="fern simple drawing with noise"
+        class={`plant ${className}`}
+        style={`${style} width: unset; height: unset;`}
+    />
+))}
+
+<style>
+    .plant {
+        position: absolute;
+        display: block;
+    }
+    .plant.big {
+        max-height: min(45vw, 20rem);
+        max-width: min(35vw, 16rem);
+    }
+    .plant.small {
+        max-height: min(15vw, 10rem);
+        max-width: min(15vw, 10rem);
+    }
+    .plant.tiny {
+        max-height: min(10vw, 4rem);
+        max-width: min(10vw, 4rem);
+    }
+</style>

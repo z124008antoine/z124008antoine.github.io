@@ -1,14 +1,15 @@
 ---
-import { ViewTransitions, slide } from "astro:transitions";
+import { ViewTransitions, fade } from "astro:transitions";
 import i18next, { t } from "i18next";
 import { HeadHrefLangs } from "astro-i18next/components";
 import NavBar from "../components/NavBar.astro";
 import { textSpacing } from "../scripts/transitions";
 import Separator from "../components/Separator.astro";
-import Transition from "../components/Transition.astro";
+import PageTransition from "../components/PageTransition.astro";
+import Plants from "../components/Plants.astro";
 ---
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang={i18next.language}>
 	<head>
 		<meta charset="UTF-8" />
@@ -28,17 +29,36 @@ import Transition from "../components/Transition.astro";
 		<ViewTransitions />
 	</head>
 	<body>
-		<NavBar />
-		<h1 transition:animate={textSpacing}>
-			{t("meta.title-long")}
-		</h1>
+		<script>
+			import gsap from "gsap";
+			import { ScrollTrigger } from "gsap/ScrollTrigger";
+			gsap.registerPlugin(ScrollTrigger);
+			window.gsap = gsap;
+			window.ScrollTrigger = ScrollTrigger;
+		</script>
 		
-		<slot />
+		<NavBar transition:persist />
 
-		<Transition />
+		<!--
+			Header, common to every page
+			It takes up the full height of the viewport
+		-->
+		<header>
+			<h1 transition:animate={textSpacing}>
+				{t("meta.title-long")}
+			</h1>
+			<Separator />
+			<Plants />
+		</header>
+		
+		<main transition:animate={fade({duration: 1000})}>
+			<slot />
+		</main>
+
+		<PageTransition transition:persist />
 
 		<script>
-			import "../scripts/scroll";
+			import '../scripts/scroll';
 		</script>
 	</body>
 
@@ -53,10 +73,13 @@ import Transition from "../components/Transition.astro";
 		}
 
 		:root {
-			--color-text: #111;
+			--primary-color: #6e8670;;
+			--secondary-color: #e0bf29;
+			--background-1: #e6e6e6;
+			--background-2: #e7e7e7;
+			--text-color: #111;
+			--text-color-bright: #ebe2e8;
 			--line-width: 0.1rem;
-			--background-1: #d2d3d4;
-			--background-2: #f0f0f8;
 		}
 
 		* {
@@ -71,7 +94,7 @@ import Transition from "../components/Transition.astro";
 		}
 
 		body {
-			color: var(--color-text);
+			color: var(--text-color-1);
 			background: var(--background-2);
 			background-repeat: no-repeat;
 			background-size: cover;
@@ -82,8 +105,19 @@ import Transition from "../components/Transition.astro";
 		h1 {
 			font-family: "Roxie Rossa", serif;
 			font-size: 5rem;
-			margin-top: 8rem;
 			text-align: center;
+			z-index: 99;
+		}
+
+		header {
+			position: relative;
+			height: calc(100vh - var(--full-nav-height));
+			overflow: hidden;
+			border-bottom: var(--line-width) solid var(--text-color);
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
 		}
 
 		html.lenis, html.lenis body {

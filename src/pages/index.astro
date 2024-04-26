@@ -14,8 +14,8 @@ projects.sort((a, b) => b.frontmatter.relevance - a.frontmatter.relevance);
 <Layout>
 	{projects.map((project) => (
         <Separator />
+        <h2 transition:animate={fade()} class="project-title">{project.frontmatter.title}</h2>
         <section class="project">
-            <h2 transition:animate={fade()} class="project-title">{project.frontmatter.title}</h2>
             <div class="content">
                 <project.Content />
             </div>
@@ -30,8 +30,8 @@ projects.sort((a, b) => b.frontmatter.relevance - a.frontmatter.relevance);
 <style>
     section {
         position: relative;
-        height: 100vh;
         overflow: hidden;
+        border-bottom: solid var(--line-width) var(--text-color);
     }
 	h2 {
         font-size: 2.5rem;
@@ -43,7 +43,7 @@ projects.sort((a, b) => b.frontmatter.relevance - a.frontmatter.relevance);
         font-family: "Roxie Rossa", serif;
     }
     .content {
-        margin-top: 1rem;
+        margin-top: 3rem;
         position: relative;
         display: grid;
         grid-template-rows: repeat(2, 45%);
