@@ -1,5 +1,5 @@
 ---
-import { ViewTransitions, fade } from "astro:transitions";
+import { ViewTransitions, fade, slide } from "astro:transitions";
 import i18next, { t } from "i18next";
 import { HeadHrefLangs } from "astro-i18next/components";
 import NavBar from "../components/NavBar.astro";
@@ -26,12 +26,12 @@ import Scroll from "../components/Scroll.astro";
 			href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
 			rel="stylesheet"
 		/>
-		<script>
+		<!-- <script>
 			// make sure that astro is not triggered when the scrollend event is fired
 			window.addEventListener('scrollend', (e) => {
 				e.stopImmediatePropagation();
 			});
-			</script>
+			</script> -->
 		<HeadHrefLangs />
 		<ViewTransitions />
 	</head>
@@ -51,10 +51,13 @@ import Scroll from "../components/Scroll.astro";
 			It takes up the full height of the viewport
 		-->
 		<header>
-			<h1 transition:animate={textSpacing}>
+			<h1 transition:animate={slide({ duration: 1000 })}>
 				{t("meta.title-long")}
 			</h1>
-			<Separator />
+			<p class="scroll-cta">
+				{t("meta.scroll-cta")}
+			</p>
+			<Separator animate />
 			<Plants transition:persist />
 		</header>
 		
@@ -62,7 +65,7 @@ import Scroll from "../components/Scroll.astro";
 			<slot />
 		</main>
 		
-		<PageTransition transition:persist />
+		<PageTransition />
 		
 		<Scroll />
 	</body>
@@ -83,7 +86,7 @@ import Scroll from "../components/Scroll.astro";
 			--background-1: #e6e6e6;
 			--background-2: #e7e7e7;
 			--text-color: #111;
-			--text-color-bright: #ebe2e8;
+			--text-color-bright: #f5f3eb;
 			--line-width: 0.1rem;
 		}
 
@@ -117,6 +120,11 @@ import Scroll from "../components/Scroll.astro";
 			h1 {
 				font-size: 6rem;
 			}
+		}
+		.scroll-cta {
+			font-size: 1.5rem;
+			width: min(20rem, 70vw);
+			text-align: center;
 		}
 
 		header {

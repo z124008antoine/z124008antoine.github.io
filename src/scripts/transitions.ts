@@ -1,13 +1,13 @@
 const textAnim = {
     old: {
         name: 'textShrink',
-        duration: '.3s',
+        duration: '1s',
         easing: 'ease-in',
         fillMode: 'forwards',
     },
     new: {
         name: 'textGrow',
-        duration: '.5s',
+        duration: '1s',
         easing: 'ease-out',
         fillMode: 'backwards',
     }

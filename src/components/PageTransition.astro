@@ -14,7 +14,7 @@
 </style>
 
 <script>
-    document.addEventListener("astro:after-preparation", () => {
+    document.addEventListener("astro:before-preparation", () => {
         gsap.fromTo("#page-cover", {
             background: "radial-gradient(circle, var(--primary-color) 0%, #0000 0%)"
         }, {
@@ -22,7 +22,7 @@
             background: "radial-gradient(circle, var(--primary-color) 100%, #0000 100%)",
         });
     });
-    document.addEventListener("astro:after-swap", () => {
+    document.addEventListener("astro:page-load", () => {
         gsap.fromTo("#page-cover", {
             background: "radial-gradient(circle, #0000 0%, var(--primary-color) 0%)"
         }, {

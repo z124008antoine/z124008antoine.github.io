@@ -1,15 +1,46 @@
 ---
-const { height = "10rem" } = Astro.props;
+const { height = "10rem", animate = false } = Astro.props;
 ---
 
-<hr style={`height: ${height};`} />
+<hr style={`height: ${height};`} class:list={[{animate}]} />
 
 <style>
+    @keyframes expand {
+        0% {
+            transform-origin: 0% 0%;
+            transform: scale(1, 0.02);
+        }
+        
+        48% {
+            transform-origin: 0% 0%;
+            transform: scale(1, 1);
+            
+        }
+        
+        52% {
+            transform-origin: 100% 100%;
+            transform: scale(1, 1);
+        }
+        
+        80% {
+            transform-origin: 100% 100%;
+            transform: scale(1, 0.02);
+        }
+        to {
+            transform-origin: 0% 0%;
+            transform: scale(1, 0.02);
+        }
+    }
+
     hr {
         /* vertical */
         width: var(--line-width);
         border: none;
         background-color: var(--text-color);
         margin: 2rem auto;
+    }
+
+    hr.animate {
+        animation: expand 3s infinite ease-in-out;
     }
 </style>

@@ -2,6 +2,7 @@
     "meta": {
         "title": "Portfolio",
         "title-long": "Portfolio Highlights",
-        "description": "This page is a showcase of different projects I have worked on."
+        "description": "This page is a showcase of different projects I have worked on.",
+        "scroll-cta": "Scroll down to see some of my work"
     }
 }
