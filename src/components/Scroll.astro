@@ -1,6 +1,7 @@
 <script>
     import Lenis from '@studio-freight/lenis';
-    window.lenis = new Lenis();
+    const lenis = new Lenis();
+    window.lenis = lenis;
     lenis.on('scroll', ScrollTrigger.update);
 
     gsap.ticker.add((time)=>{
@@ -8,4 +9,9 @@
     })
 
     gsap.ticker.lagSmoothing(0);
+
+    document.addEventListener("astro:before-preparation", (e) => {
+        lenis.scrollTo(0);
+        console.log("before-preparation");
+    });
 </script>

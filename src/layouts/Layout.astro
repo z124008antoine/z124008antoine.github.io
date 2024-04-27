@@ -3,9 +3,8 @@ import { ViewTransitions } from "astro:transitions";
 import i18next, { t } from "i18next";
 import { HeadHrefLangs } from "astro-i18next/components";
 import NavBar from "../components/NavBar.astro";
-import Separator from "../components/Separator.astro";
-import PageTransition from "../components/PageTransition.astro";
-import Plants from "../components/Plants.astro";
+import Separator from "../components/decorations/Separator.astro";
+import Plants from "../components/decorations/Plants.astro";
 import Scroll from "../components/Scroll.astro";
 import { slideCustom } from "../scripts/transitions";
 ---
@@ -58,14 +57,12 @@ import { slideCustom } from "../scripts/transitions";
 				{t("meta.scroll-cta")}
 			</p>
 			<Separator animate />
-			<Plants />
+			<Plants transition:persist />
 		</header>
 		
 		<main>
 			<slot />
 		</main>
-		
-		<PageTransition />
 		
 		<Scroll />
 	</body>
@@ -81,13 +78,13 @@ import { slideCustom } from "../scripts/transitions";
 		}
 
 		:root {
-			--primary-color: #6e8670;;
+			--primary-color: #5a795c;;
 			--secondary-color: #e0bf29;
 			--background-1: #e6e6e6;
 			--background-2: #e7e7e7;
 			--text-color: #111;
 			--text-color-bright: #f5f3eb;
-			--line-width: 0.1rem;
+			--line-width: 0.07rem;
 		}
 
 		* {
@@ -123,7 +120,8 @@ import { slideCustom } from "../scripts/transitions";
 			}
 		}
 		.scroll-cta {
-			font-size: 1.5rem;
+			margin-top: 2rem;
+			font-size: 1.6rem;
 			width: min(20rem, 70vw);
 			text-align: center;
 		}

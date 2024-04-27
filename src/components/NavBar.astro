@@ -60,17 +60,24 @@ const pathname = Astro.site?.pathname;
         font-size: 1.2rem;
         padding: 1em;
         text-align: center;
-        transition: .2s ease-in-out;
-        transition: letter-spacing transform;
+        transition: transform .2s ease-in-out;
     }
 
-    .navigation a:hover {
-        text-decoration: underline;
-        letter-spacing: .1em;
+    .navigation a::after {
+        content: "";
+        display: block;
+        width: 100%;
+        transform: scaleX(0);
+        height: var(--line-width);
+        background-color: var(--text-color-bright);
+        transition: transform .4s cubic-bezier(.7,0,0,1.5);
+    }
+
+    .navigation a:hover::after {
+        transform: scaleX(1);
     }
 
     .navigation a:active {
-        letter-spacing: 0;
-        transform: translateY(2px);
+        transform: scale(.95) translateY(3px);
     }
 </style>
