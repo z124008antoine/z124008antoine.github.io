@@ -21,4 +21,18 @@ document.addEventListener('astro:page-load', () => {
             x: () => window.innerWidth - c.offsetWidth,
         });
     });
+
+    const titles = gsap.utils.toArray(".project-title");
+    titles.forEach((title) => {
+        const t = title as HTMLElement;
+        gsap.from(t, {
+            scrollTrigger: {
+                trigger: t,
+                start: "center 80%",
+                end: "center 50%",
+                scrub: 0.5,
+            },
+            scale: 0.8,
+        });
+    });
 });

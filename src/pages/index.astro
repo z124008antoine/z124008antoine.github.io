@@ -33,13 +33,18 @@ projects.sort((a, b) => b.frontmatter.relevance - a.frontmatter.relevance);
         border-bottom: solid var(--line-width) var(--text-color);
     }
 	h2 {
-        font-size: 2.5rem;
+        font-size: 3rem;
         padding: 0 .5rem;
         text-align: center;
         font-weight: 400;
         width: fit-content;
         margin: auto;
         font-family: "Roxie Rossa", serif;
+    }
+    @media screen and (min-width: 1000px) {
+        h2 {
+            font-size: 4rem;
+        }
     }
     .content {
         margin-top: 3rem;

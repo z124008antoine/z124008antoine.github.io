@@ -71,6 +71,7 @@ const pathname = Astro.site?.pathname;
         height: var(--line-width);
         background-color: var(--text-color-bright);
         transition: transform .4s cubic-bezier(.7,0,0,1.5);
+        margin-bottom: calc(var(--line-width) * -1);
     }
 
     .navigation a:hover::after {
