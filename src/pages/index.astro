@@ -1,7 +1,6 @@
 ---
 import { changeLanguage, setDefaultNamespace } from "i18next";
 import Layout from "../layouts/Layout.astro";
-import { fade } from "astro:transitions";
 import Separator from "../components/Separator.astro";
 
 changeLanguage("en");
@@ -14,7 +13,7 @@ projects.sort((a, b) => b.frontmatter.relevance - a.frontmatter.relevance);
 <Layout>
 	{projects.map((project) => (
         <Separator />
-        <h2 transition:animate={fade()} class="project-title">{project.frontmatter.title}</h2>
+        <h2 class="project-title">{project.frontmatter.title}</h2>
         <section class="project">
             <div class="content">
                 <project.Content />

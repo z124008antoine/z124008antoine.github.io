@@ -13,11 +13,19 @@ const pages = [
 const pathname = Astro.site?.pathname;
 ---
 
+<script is:inline>
+    function navigate(e) {
+        console.log(e);
+        e.preventDefault();
+    }
+</script>
+
 <nav class="navigation">
     <!-- Loop through the pages and create a link for each one -->
-    {pages.map((page, i) => (
+    {pages.map((page) => (
         <a
             href={page.path}
+            onclick="navigate"
             class:list={[{"current-page": page.path === pathname}]}>
             {page.title}
         </a>

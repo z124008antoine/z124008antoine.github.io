@@ -1,6 +1,6 @@
 <script>
     import Lenis from '@studio-freight/lenis';
-    export const lenis = new Lenis();
+    window.lenis = new Lenis();
     lenis.on('scroll', ScrollTrigger.update);
 
     gsap.ticker.add((time)=>{

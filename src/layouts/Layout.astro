@@ -1,13 +1,13 @@
 ---
-import { ViewTransitions, fade, slide } from "astro:transitions";
+import { ViewTransitions } from "astro:transitions";
 import i18next, { t } from "i18next";
 import { HeadHrefLangs } from "astro-i18next/components";
 import NavBar from "../components/NavBar.astro";
-import { textSpacing } from "../scripts/transitions";
 import Separator from "../components/Separator.astro";
 import PageTransition from "../components/PageTransition.astro";
 import Plants from "../components/Plants.astro";
 import Scroll from "../components/Scroll.astro";
+import { slideCustom } from "../scripts/transitions";
 ---
 
 <!DOCTYPE html>
@@ -26,12 +26,12 @@ import Scroll from "../components/Scroll.astro";
 			href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
 			rel="stylesheet"
 		/>
-		<!-- <script>
+		<script>
 			// make sure that astro is not triggered when the scrollend event is fired
 			window.addEventListener('scrollend', (e) => {
 				e.stopImmediatePropagation();
 			});
-			</script> -->
+		</script>
 		<HeadHrefLangs />
 		<ViewTransitions />
 	</head>
@@ -51,17 +51,17 @@ import Scroll from "../components/Scroll.astro";
 			It takes up the full height of the viewport
 		-->
 		<header>
-			<h1 transition:animate={slide({ duration: 1000 })}>
+			<h1 transition:animate={slideCustom(1000)}>
 				{t("meta.title-long")}
 			</h1>
-			<p class="scroll-cta">
+			<p class="scroll-cta" transition:animate={slideCustom(1000, 'right')}>
 				{t("meta.scroll-cta")}
 			</p>
 			<Separator animate />
-			<Plants transition:persist />
+			<Plants />
 		</header>
 		
-		<main transition:animate={fade({duration: 1000})}>
+		<main>
 			<slot />
 		</main>
 		
@@ -115,6 +115,7 @@ import Scroll from "../components/Scroll.astro";
 			font-size: 4rem;
 			text-align: center;
 			z-index: 5;
+			max-width: 90vw;
 		}
 		@media screen and (min-width: 1000px) {
 			h1 {
