@@ -7,7 +7,7 @@ document.addEventListener('astro:page-load', () => {
                 trigger: t,
                 start: "center bottom",
                 end: "center top",
-                toggleActions: "restart none none none",
+                toggleActions: "restart none none reverse",
             },
             scale: 0.8,
             duration: 0.3,
@@ -20,11 +20,25 @@ document.addEventListener('astro:page-load', () => {
         gsap.to(c, {
             scrollTrigger: {
                 trigger: c,
-                start: "center 80%",
-                end: "center 20%",
-                scrub: 0.3,
+                start: "bottom bottom",
+                end: "top top",
+                scrub: 1,
             },
-            objectPosition: "100% 100%",
+            objectPosition: "80% 80%",
+        });
+    });
+
+    const projectCards = gsap.utils.toArray(".project-card");
+    projectCards.forEach((card) => {
+        const c = card as HTMLElement;
+        gsap.to(c, {
+            scrollTrigger: {
+                trigger: c,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: 1,
+            },
+            y: - Math.random() * 500,
         });
     });
 });

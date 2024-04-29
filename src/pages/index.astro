@@ -67,19 +67,17 @@ projects.sort((a, b) => b.data.relevance - a.data.relevance);
         border-bottom: none;
         padding: 1rem;
         width: min(90%, 30rem);
-        margin: 1rem 0;
-        margin-left: 8%;
+        margin: 1rem auto;
     }
 
     .project-cover-wrap {
-        width: 100%;
-        max-width: 95vw;
-        height: 30rem;
+        width: max(min(30rem, 90vw), 100%);
+        height: min(30rem, 90vw);
     }
     .project-cover {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        object-position: 0% 0%;
+        object-position: 20% 20%;
     }
 </style>
