@@ -1,21 +1,3 @@
-@keyframes circleIn {
-    from {
-        clip-path: circle(0% at 50% 50%);
-    }
-    to {
-        clip-path: circle(150% at 50% 50%);
-    }
-}
-
-@keyframes circleOut {
-    from {
-        clip-path: circle(150% at 50% 50%);
-    }
-    to {
-        clip-path: circle(0% at 50% 50%);
-    }
-}
-
 @keyframes slideToLeft {
     from {
         transform: none;

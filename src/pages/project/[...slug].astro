@@ -32,9 +32,13 @@ const { Content } = await entry.render();
 </Layout>
 
 <script>
-    import zoom from 'medium-zoom';
-
-    zoom('.blog-grid img');
+    import zoom, { type Zoom } from 'medium-zoom';
+    let zoomInstance: Zoom;
+    document.addEventListener('astro:page-load', () => {
+        if (zoomInstance)
+            zoomInstance.update({});
+        zoomInstance = zoom('.blog-grid img');
+    });
 </script>
 
 

@@ -17,10 +17,10 @@ import { t } from "i18next";
 			It takes up the full height of the viewport
 		-->
 		<header>
-			<h1 transition:animate={slideCustom(1000)}>
+			<h1 transition:animate={slideCustom(1000)} transition:name="main page title">
 				{t("meta.title-long")}
 			</h1>
-			<p class="scroll-cta" transition:animate={slideCustom(1000, 'right')}>
+			<p class="scroll-cta" transition:animate={slideCustom(1000, 'right')} transition:name="main page scroll-cta">
 				{t("meta.scroll-cta")}
 			</p>
 			<Separator animate />
