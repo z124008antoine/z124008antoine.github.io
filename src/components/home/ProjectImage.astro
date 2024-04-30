@@ -2,40 +2,11 @@
 import { Image } from "astro:assets";
 
 const { src, alt, big=false } = Astro.props;
-
-const xShift = (Math.random() - 0.5) * 80;
 ---
 
-<div class:list={["image-wrap", {big}]} style={{transform: `translateX(${xShift}px)`}}>
     <Image {src} {alt} />
-</div>
 
 <style>
-    .image-wrap {
-        position: relative;
-        width: min(90vw, 35rem);
-        height: min(40vh, 30rem);
-        margin: auto;
-        display: flex;
-        justify-content: center;
-        z-index: -1;
-    }
-    
-    .image-wrap.big {
-        grid-row: span 2;
-        width: unset;
-        height: min(80vh, 40rem);
-        max-width: 70vw;
-    }
-
-    /* on vertical screens */
-    @media screen and (orientation: portrait) {
-        .image-wrap.big {
-            max-width: 180vw;
-            max-height: 90vh;
-        }
-    }
-
     img {
         height: 100%;
         width: 100%;

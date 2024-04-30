@@ -1,6 +1,7 @@
 ---
 title: A chalet
 cover: ../../assets/chalet/chalet.jpg
+coverAlt: The mountain chalet in construction
 description: My grandparents created a community in the french alps during the 70s. They both passed away but the community is still alive. Unfortunately, it went through two consecutive fires that destroyed 2 housings and a lot of land. One evening, thinking about this, I came up with the idea of building a brand new one.
 relevance: 60
 group-size: 15
@@ -9,23 +10,22 @@ end-date: 2023-06-02
 link: https://antoineblu.github.io/jansiac/
 ---
 
-import ProjectText from '../../components/home/ProjectText.astro';
-import ProjectImage from '../../components/home/ProjectImage.astro';
+import { Image } from 'astro:assets';
 
 import fire from '../../assets/chalet/fire.jpg';
 
-<ProjectImage src={fire} alt="The fire that destroyed the chalet" />
+<Image src={fire} alt="The fire that destroyed the chalet" />
 
-<ProjectText title="Summary">Did you expect IT projects only? No, I also practiced my skills on original projects and this is one of them. My grandparents created a community in the french alps during the 70s. They both passed away but the community is still alive. Unfortunately, it went through two consecutive fires that destroyed 2 housings and a lot of land. One evening, thinking about this, I came up with the idea of building a brand new one.</ProjectText>
+Did you expect IT projects only? No, I also practiced my skills on original projects and this is one of them. My grandparents created a community in the french alps during the 70s. They both passed away but the community is still alive. Unfortunately, it went through two consecutive fires that destroyed 2 housings and a lot of land. One evening, thinking about this, I came up with the idea of building a brand new one.
 
-<ProjectText title="The realization">Still a teen, I was not so aware of the difficulties and got told that it was a crazy idea. But I didn't give up and started looking for already-built chalets that we would just have to move. Next thing I knew, I was in a small town in the south of France, disassembling a chalet with family and friends. Right before leaving, I quickly programmed a little website to present the project and ask for help. This website ended up being a way to update the people who donated or were interested in the project. You can visit it [here](https://antoineblu.github.io/jansiac/).</ProjectText>
+Still a teen, I was not so aware of the difficulties and got told that it was a crazy idea. But I didn't give up and started looking for already-built chalets that we would just have to move. Next thing I knew, I was in a small town in the south of France, disassembling a chalet with family and friends. Right before leaving, I quickly programmed a little website to present the project and ask for help. This website ended up being a way to update the people who donated or were interested in the project. You can visit it [here](https://antoineblu.github.io/jansiac/).
 
 import disassemble from '../../assets/chalet/disassemble.jpg';
 import chalet from '../../assets/chalet/chalet.jpg';
 
-<ProjectImage src={disassemble} alt="Disassembling the chalet" />
-<ProjectImage src={chalet} alt="The mountain chalet" />
+<Image src={disassemble} alt="Disassembling the chalet" />
+<Image src={chalet} alt="The mountain chalet" />
 
-<ProjectText title="Time">The project should've taken about a week but in reality it took much more... Disassembling took longer, so after a week, we only had the foundations of the chalet in its new location. People had to go back to their lives so we had to wait for the next holidays to continue. And it was still not enough the second time! But we did things the right way and a year after the start, the chalet was finally ready to be used after our third intervention.</ProjectText>
+The project should've taken about a week but in reality it took much more... Disassembling took longer, so after a week, we only had the foundations of the chalet in its new location. People had to go back to their lives so we had to wait for the next holidays to continue. And it was still not enough the second time! But we did things the right way and a year after the start, the chalet was finally ready to be used after our third intervention.
 
-<ProjectText title="Conclusion">I am so thankful for everything I learned during this project. I was surrounded by experienced adults who took time to explain me everything and who trusted me. Surprisingly, I also learned about leading because I found myself in situations where I had to make decisions and adults were waiting orders from me. It's something I didn't expect at all because I was lacking so much experience but they gave me this wonderful opportunity with their trust and patience.</ProjectText>
+I am so thankful for everything I learned during this project. I was surrounded by experienced adults who took time to explain me everything and who trusted me. Surprisingly, I also learned about leading because I found myself in situations where I had to make decisions and adults were waiting orders from me. It's something I didn't expect at all because I was lacking so much experience but they gave me this wonderful opportunity with their trust and patience.

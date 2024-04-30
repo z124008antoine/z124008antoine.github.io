@@ -27,18 +27,4 @@ document.addEventListener('astro:page-load', () => {
             objectPosition: "80% 80%",
         });
     });
-
-    const projectCards = gsap.utils.toArray(".project-card");
-    projectCards.forEach((card) => {
-        const c = card as HTMLElement;
-        gsap.to(c, {
-            scrollTrigger: {
-                trigger: c,
-                start: "top bottom",
-                end: "bottom top",
-                scrub: 1,
-            },
-            y: - Math.random() * 500,
-        });
-    });
 });

@@ -1,19 +1,67 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+import { slide } from 'astro:transitions';
+import { Image } from 'astro:assets';
 
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
-  const blogEntries = await getCollection('project');
-  return blogEntries.map(entry => ({
-    params: { slug: entry.slug }, props: { entry },
-  }));
+    const blogEntries = await getCollection('project');
+    return blogEntries.map(entry => ({
+        params: { slug: entry.slug }, props: { entry },
+    }));
 }
 // 2. For your template, you can get the entry directly from the prop
 const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
+
 <Layout>
-    <h1>{entry.data.title}</h1>
-    <Content />
+    <div class="blog-body">
+		<h1 transition:name={`${entry.slug} title`}>{entry.data.title}</h1>
+        <div class="blog-grid">
+            <Image src={entry.data.cover} alt={entry.data.coverAlt} transition:name={`${entry.slug} cover`} />
+            <Content />
+        </div>
+    </div>
 </Layout>
+
+
+<style>
+	.blog-body {
+		padding: 20px;
+	}
+    h1 {
+        position: fixed;
+        margin: 1rem .5rem;
+        font-size: 3rem;
+        font-weight: 400;
+        font-family: "Roxie Rossa", serif;
+        border: solid var(--line-width) var(--text-color);
+        border-right: none;
+        border-left: none;
+        width: fit-content;
+        padding: .25rem 1rem;
+        z-index: 2;
+    }
+
+    .blog-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+        align-items: center;
+        gap: 20px;
+        width: min(98%, 70rem);
+        margin: auto;
+    }
+
+    :global(.blog-grid img) {
+        max-width: 100%;
+        height: auto;
+    }
+
+    :global(.blog-grid p) {
+        font-size: 1.25rem;
+        line-height: 1.5;
+        padding: 1rem;
+    }
+</style>

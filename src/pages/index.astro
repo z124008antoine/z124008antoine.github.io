@@ -17,9 +17,9 @@ projects.sort((a, b) => b.data.relevance - a.data.relevance);
         {projects.map((project) => (
             <a class="project-card" href={`/project/${project.slug}`}>
                 <div class="project-cover-wrap">
-                    <Image src={project.data.cover} alt={project.data.title} class="project-cover" />
+                    <Image src={project.data.cover} alt={project.data.title} class="project-cover" transition:name={`${project.slug} cover`} />
                 </div>
-                <h2 class="project-title">{project.data.title}</h2>
+                <h2 class="project-title" transition:name={`${project.slug} title`}>{project.data.title}</h2>
                 <p class="project-text">
                     {project.data.description}
                 </p>

@@ -4,6 +4,7 @@ import i18next, { t } from "i18next";
 import { HeadHrefLangs } from "astro-i18next/components";
 import NavBar from "../components/NavBar.astro";
 import Scroll from "../components/Scroll.astro";
+import PageTransition from "../components/PageTransition.astro";
 ---
 
 <!DOCTYPE html>
@@ -45,7 +46,7 @@ import Scroll from "../components/Scroll.astro";
 		<main>
 			<slot />
 		</main>
-		
+
 		<Scroll />
 	</body>
 

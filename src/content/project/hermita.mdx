@@ -1,6 +1,7 @@
 ---
 title: Hermita
 cover: ../../assets/hermita/forest.png
+coverAlt: Screenshot of the game Hermita, gameplay in a forest
 description: Hermita is a multiplayer game developed in C# using Unity. It was a school project assigned at EPITA.
 relevance: 80
 group-size: 4
@@ -8,35 +9,34 @@ begin-date: 2022-12-01
 end-date: 2023-06-02
 link: https://hermita-game.github.io/
 ---
-import ProjectText from '../../components/home/ProjectText.astro';
-import ProjectImage from '../../components/home/ProjectImage.astro';
 
-<ProjectText title="Summary">Hermita is a school project I worked on with three other students. We developed a game in C# using Unity. Hermita was quite an ambitious project but it was very pleasant to work on and I was able to learn a lot from it. We were asked to create a multiplayer game with a rather open theme. We used this opportunity to build a game that would actually be fun to play. </ProjectText>
+import { Image } from 'astro:assets';
 
-import forest from '../../assets/hermita/forest.png';
+Hermita is a school project I worked on with three other students. We developed a game in C# using Unity. Hermita was quite an ambitious project but it was very pleasant to work on and I was able to learn a lot from it. We were asked to create a multiplayer game with a rather open theme. We used this opportunity to build a game that would actually be fun to play.
+
+We play an old wizard whom lives alone on a sky island. However, he can play with friends online to fight monsters on a multiplayer sky island. We fight we spells only and killing monsters gives items which can be used later to craft items on the solo player island.
+
 import fight from '../../assets/hermita/fight.png';
 
-<ProjectImage src={forest} alt="Logo of the game Hermita" />
-<ProjectImage src={fight} alt="Screenshot of the game Hermita" />
+<Image src={fight} alt="Screenshot of the game Hermita" />
 
-<ProjectText title="The game itself">We play an old wizard whom lives alone on a sky island. However, he can play with friends online to fight monsters on a multiplayer sky island. We fight we spells only and killing monsters gives items which can be used later to craft items on the solo player island.</ProjectText>
 
 import website from '../../assets/hermita/website.png';
 
-<ProjectImage src={website} alt="Screenshot of the website of the game Hermita" />
+<Image src={website} alt="Screenshot of the website of the game Hermita" />
 
-<ProjectText title="My contributions">Creating this game required a wide range of skills. I built the website for our project, you can visit it [here](https://hermita-game.github.io/). For the game, I handled the multiplayer connection, the behavior of entities, the inventory system and interface, the minimap generation/display and many little details that participated in making this game look complete.</ProjectText>
+Creating this game required a wide range of skills. I built the website for our project, you can visit it [here](https://hermita-game.github.io/). For the game, I handled the multiplayer connection, the behavior of entities, the inventory system and interface, the minimap generation/display and many little details that participated in making this game look complete.
 
-<ProjectText title="My role">In this project, I worked on the base tools for the game. I got to work on abstract concepts, at the core of our application, which I love doing! I had to come up with unique implementations that our very specific project needed. With another very active member, we completed each other very well because I would create the tools that would allow him to bring content in the game more easily.</ProjectText>
+In this project, I worked on the base tools for the game. I got to work on abstract concepts, at the core of our application, which I love doing! I had to come up with unique implementations that our very specific project needed. With another very active member, we completed each other very well because I would create the tools that would allow him to bring content in the game more easily.
 
 import inventory from '../../assets/hermita/inventory.png';
 import shield from '../../assets/hermita/shield.png';
 
-<ProjectImage src={inventory} alt="Screenshot of the pathfinding system in the game Hermita" />
-<ProjectImage src={shield} alt="Screenshot of the shield system in the game Hermita" />
+<Image src={inventory} alt="Screenshot of the pathfinding system in the game Hermita" />
+<Image src={shield} alt="Screenshot of the shield system in the game Hermita" />
 
 import unity from '../../assets/hermita/unity.png';
 
-<ProjectImage src={unity} alt="Screenshot of the Unity project of the game Hermita" />
+<Image src={unity} alt="Screenshot of the Unity project of the game Hermita" />
 
-<ProjectText title="Conclusion">This project was also a great lesson on social issues a project can face like inactive group members. I was forced to adapt and go out of my comfort zone to sometimes take the lead. All in all, I'm very proud of what we achieved. You can try the game by downloading it on our website.</ProjectText>
+This project was also a great lesson on social issues a project can face like inactive group members. I was forced to adapt and go out of my comfort zone to sometimes take the lead. All in all, I'm very proud of what we achieved. You can try the game by downloading it on our website.

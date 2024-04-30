@@ -2,14 +2,8 @@
 const { title, big=false } = Astro.props;
 ---
 
-<div class:list={["wrap", {big}]}>
-    <div class="info-box">
-        {() => title ? <h3>{title}</h3> : null}
-        <p class="text">
+
             <slot />
-        </p>
-    </div>
-</div>
 
 <style>
     .wrap {
