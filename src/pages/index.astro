@@ -3,6 +3,7 @@ import { changeLanguage, setDefaultNamespace } from "i18next";
 import MainPage from "../layouts/MainPage.astro";
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
+import { slideCustom } from "../scripts/transitions";
 
 changeLanguage("en");
 setDefaultNamespace("home");
@@ -20,7 +21,7 @@ projects.sort((a, b) => b.data.relevance - a.data.relevance);
                     <Image src={project.data.cover} alt={project.data.title} class="project-cover" transition:name={`${project.slug} cover`} />
                 </div>
                 <h2 class="project-title" transition:name={`${project.slug} title`}>{project.data.title}</h2>
-                <p class="project-text">
+                <p class="project-text" transition:animate={slideCustom(500)}>
                     {project.data.description}
                 </p>
             </a>

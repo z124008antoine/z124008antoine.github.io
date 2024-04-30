@@ -9,4 +9,8 @@
     })
 
     gsap.ticker.lagSmoothing(0);
+
+    document.addEventListener('astro:before-swap', () => {
+        lenis.scrollTo(0, { immediate: true });
+    })
 </script>

@@ -16,6 +16,11 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 
+<head>
+    <meta name="description" content={entry.data.description} />
+	<title>{entry.data.title}</title>
+</head>
+
 <Layout>
     <div class="blog-body">
 		<h1 transition:name={`${entry.slug} title`}>{entry.data.title}</h1>
@@ -26,14 +31,20 @@ const { Content } = await entry.render();
     </div>
 </Layout>
 
+<script>
+    import zoom from 'medium-zoom';
+
+    zoom('.blog-grid img');
+</script>
+
 
 <style>
 	.blog-body {
 		padding: 20px;
 	}
     h1 {
-        position: fixed;
-        margin: 1rem .5rem;
+        margin: 5rem auto;
+        margin-bottom: 8rem;
         font-size: 3rem;
         font-weight: 400;
         font-family: "Roxie Rossa", serif;

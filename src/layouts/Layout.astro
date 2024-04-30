@@ -1,21 +1,18 @@
 ---
 import { ViewTransitions } from "astro:transitions";
-import i18next, { t } from "i18next";
+import i18next from "i18next";
 import { HeadHrefLangs } from "astro-i18next/components";
 import NavBar from "../components/NavBar.astro";
 import Scroll from "../components/Scroll.astro";
-import PageTransition from "../components/PageTransition.astro";
 ---
 
 <!DOCTYPE html>
 <html lang={i18next.language}>
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content={t("meta.description")} />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{t("meta.title")}</title>
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<!-- to optimize later -->
