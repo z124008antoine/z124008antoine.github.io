@@ -13,7 +13,7 @@
     "@astrojs/check": "^0.5.10",
     "@astrojs/mdx": "^2.3.0",
     "@studio-freight/lenis": "^1.0.42",
-    "astro": "^4.5.13",
+    "astro": "^4.7.0",
     "astro-better-image-service": "^1.0.9",
     "astro-i18next": "^1.0.0-beta.21",
     "gsap": "^3.12.5",

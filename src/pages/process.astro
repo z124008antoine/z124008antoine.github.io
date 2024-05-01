@@ -1,16 +1,34 @@
 ---
-import { changeLanguage, setDefaultNamespace, t } from "i18next";
+import { changeLanguage, setDefaultNamespace } from "i18next";
 import MainPage from "../layouts/MainPage.astro";
+import Cog from "../components/decorations/Cog.astro";
 
 changeLanguage("en");
 
 setDefaultNamespace("process");
 ---
 
+<!-- This page is going to be a box that we follow and slowly goes through all the steps -->
+
 <MainPage>
-    
+    <div class="project-box">
+        <Cog size={18} />
+        <Cog size={8} clockwise={false} />
+        <Cog size={6} />
+        <Cog size={12} clockwise={false} />
+    </div>
+    <script>
+        import '../scripts/cogs'
+    </script>
 </MainPage>
 
 <style>
-	
+	.project-box {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        align-items: center;
+    }
 </style>

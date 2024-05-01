@@ -1,7 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
-import { slide } from 'astro:transitions';
 import { Image } from 'astro:assets';
 
 // 1. Generate a new path for every collection entry
@@ -32,12 +31,11 @@ const { Content } = await entry.render();
 </Layout>
 
 <script>
-    import zoom, { type Zoom } from 'medium-zoom';
-    let zoomInstance: Zoom;
+    import zoom from 'medium-zoom';
     document.addEventListener('astro:page-load', () => {
-        if (zoomInstance)
-            zoomInstance.update({});
-        zoomInstance = zoom('.blog-grid img');
+        zoom('.blog-grid img', {
+            container: '#zoom-container',
+        });
     });
 </script>
 

@@ -11,6 +11,7 @@ import Scroll from "../components/Scroll.astro";
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
+		<slot name="head" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -33,9 +34,9 @@ import Scroll from "../components/Scroll.astro";
 		<script>
 			import gsap from "gsap";
 			import ScrollTrigger from "gsap/ScrollTrigger";
+			window.ScrollTrigger = ScrollTrigger;
 			gsap.registerPlugin(ScrollTrigger);
 			window.gsap = gsap;
-			window.ScrollTrigger = ScrollTrigger;
 		</script>
 		
 		<NavBar transition:persist />
@@ -45,6 +46,8 @@ import Scroll from "../components/Scroll.astro";
 		</main>
 
 		<Scroll />
+
+		<div id="zoom-container" />
 	</body>
 
 	<style is:global>
