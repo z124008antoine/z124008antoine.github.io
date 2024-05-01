@@ -40,11 +40,7 @@ import Scroll from "../components/Scroll.astro";
 		</script>
 		
 		<NavBar transition:persist />
-		
-		<main>
-			<slot />
-		</main>
-
+		<slot />
 		<Scroll />
 
 		<div id="zoom-container" />

@@ -25,37 +25,44 @@ import { t } from "i18next";
 			<Plants />
 		</header>
 
-        <slot />
+		<main>
+			<slot />
+		</main>
 </Layout>
 
 <style>
     h1 {
-			font-family: "Roxie Rossa", serif;
-			font-size: 4rem;
-			text-align: center;
-			z-index: 5;
-			max-width: 90vw;
+		font-family: "Roxie Rossa", serif;
+		font-size: 4rem;
+		text-align: center;
+		z-index: 5;
+		max-width: 90vw;
+	}
+	@media screen and (min-width: 1000px) {
+		h1 {
+			font-size: 6rem;
 		}
-		@media screen and (min-width: 1000px) {
-			h1 {
-				font-size: 6rem;
-			}
-		}
-		.scroll-cta {
-			margin-top: 2rem;
-			font-size: 1.6rem;
-			width: min(20rem, 70vw);
-			text-align: center;
-		}
+	}
+	.scroll-cta {
+		margin-top: 2rem;
+		font-size: 1.6rem;
+		width: min(20rem, 70vw);
+		text-align: center;
+	}
 
-		header {
-			position: relative;
-			height: calc(100vh - var(--full-nav-height));
-			overflow: hidden;
-			border-bottom: var(--line-width) solid var(--text-color);
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-		}
+	header {
+		position: relative;
+		height: calc(100vh - var(--full-nav-height));
+		overflow: hidden;
+		border-bottom: var(--line-width) solid var(--text-color);
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		z-index: 3;
+	}
+
+	main {
+		position: relative;
+	}
 </style>

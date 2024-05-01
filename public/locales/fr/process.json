@@ -1,0 +1,17 @@
+{
+    "meta": {
+        "title": "Processus",
+        "title-long": "Des idées à la réalité",
+        "description": "Découvrez ma façon de faire, la manière dont je gère un projet.",
+        "scroll-cta": "Scrollez pour voir ma façon de faire"
+    },
+    "step-1": {
+        "title": "Step 1: Recherches",
+        "texts":"<p>If we work together, we'll talk about.</p><p class=\"step-text\">It's not about doing my project for you, it's about project.</p>"
+    },
+    "step-2": {
+        "title": "Step 2: Chatting",
+        "texts": "<p>If we work together, we'll talk about <strong>you</strong>.</p><p>It's not about doing my project for you, it's about <strong>your</strong> project!</p><p>You know your business better than anyone else.</p>",
+        "text-change": "Awesome innovation"
+    }
+}

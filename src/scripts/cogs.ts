@@ -1,4 +1,4 @@
-const speed = 2;
+const speed = 4;
 document.addEventListener('astro:page-load', () => {
     const cogs = gsap.utils.toArray('.cog');
     cogs.forEach((cog) => {
@@ -7,15 +7,18 @@ document.addEventListener('astro:page-load', () => {
         const offset = Number(c.getAttribute('data-cog-offset')) || 0;
         const direction = c.getAttribute('data-cog-clockwise') === '' ? 1 : -1;
         console.log( c.getAttribute('data-cog-clockwise') );
-        gsap.to(c, {
+        gsap.fromTo(c, {
+                rotate: offset
+            }, {
             scrollTrigger: {
                 trigger: document.body,
                 start: 'top top',
                 end: 'bottom bottom',
-                scrub: 1,
-                markers: true,
+                scrub: 2,
+                invalidateOnRefresh: true,
             },
-            rotate: () => direction * (offset * 360 + (window.innerHeight*speed / size)),
+            rotate: () => offset + direction * ((document.body.clientHeight - window.innerHeight)*speed / size),
+            ease: 'none',
         });
     });
 });
