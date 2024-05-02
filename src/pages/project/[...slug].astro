@@ -35,15 +35,11 @@ const { Content } = await entry.render();
 </Layout>
 
 <script>
-    import zoom, { type Zoom } from 'medium-zoom';
-    let zoomInstance: Zoom | null = null;
+    import zoom from 'medium-zoom';
     document.addEventListener('astro:page-load', () => {
-        if (zoomInstance) {
-            zoomInstance.detach();
-            console.log('Detached zoom instance');
-        }
-        zoomInstance = zoom('.blog-grid img', {
+        zoom('.blog-grid img', {
             container: '#zoom-container',
+            background: 'rgba(0, 0, 0, 0.6)',
         });
     });
 </script>
