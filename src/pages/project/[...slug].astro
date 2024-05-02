@@ -35,9 +35,14 @@ const { Content } = await entry.render();
 </Layout>
 
 <script>
-    import zoom from 'medium-zoom';
+    import zoom, { type Zoom } from 'medium-zoom';
+    let zoomInstance: Zoom | null = null;
     document.addEventListener('astro:page-load', () => {
-        zoom('.blog-grid img', {
+        if (zoomInstance) {
+            zoomInstance.detach();
+            console.log('Detached zoom instance');
+        }
+        zoomInstance = zoom('.blog-grid img', {
             container: '#zoom-container',
         });
     });
@@ -64,7 +69,7 @@ const { Content } = await entry.render();
 
     .blog-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(min(30rem, 90vw), 1fr));
         align-items: center;
         gap: 20px;
         width: min(98%, 70rem);

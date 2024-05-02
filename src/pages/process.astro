@@ -47,14 +47,14 @@ setDefaultNamespace("process");
         </p>
     </div>
 
-    <section>
+    <section class="process-section">
         <h2 id="step-1">{t('step-1.title')}</h2>
         <Fragment set:html={t('step-1.texts')} />
     </section>
 
     <Separator />
 
-    <section>
+    <section class="process-section">
         <h2 id="step-2" data-text-change={`${t('step-2.text-change')}`}>
             Step 2: Chatting
         </h2>
@@ -63,14 +63,14 @@ setDefaultNamespace("process");
 
     <Separator />
 
-    <section>
+    <section class="process-section">
         <h2 id="step-3" data-text-change={`${t('step-3.text-change')}`}>
             {t('step-3.title')}
         </h2>
         <Fragment set:html={t('step-3.texts')} />
     </section>
 
-    <section>
+    <section class="process-section">
         <h2 id="step-4" data-text-change={`${t('step-4.text-change')}`}>
             {t('step-4.title')}
         </h2>
@@ -143,7 +143,7 @@ setDefaultNamespace("process");
         z-index: 1;
     }
 
-    section {
+    .process-section {
         margin: 5rem auto;
         display: flex;
         flex-direction: column;
@@ -157,7 +157,7 @@ setDefaultNamespace("process");
         text-align: center;
     }
 
-    :global(section p) {
+    :global(.process-section p) {
         font-size: 1.5rem;
         line-height: 1.5;
         margin-top: 5rem;

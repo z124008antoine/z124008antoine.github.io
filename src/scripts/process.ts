@@ -16,7 +16,7 @@ document.addEventListener('astro:page-load', () => {
     });
 
     // Fade in text elements
-    const textElements = gsap.utils.toArray('section > *');
+    const textElements = gsap.utils.toArray('.process-section > *');
     textElements.forEach((el) => {
         const text = el as HTMLElement;
         gsap.from(text, {
