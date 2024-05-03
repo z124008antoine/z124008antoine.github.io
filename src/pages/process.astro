@@ -1,90 +1,115 @@
 ---
 import { changeLanguage, setDefaultNamespace, t } from "i18next";
+import { localizePath } from "astro-i18next";
 import MainPage from "../layouts/MainPage.astro";
 import Cog from "../components/decorations/Cog.astro";
 import Separator from "../components/decorations/Separator.astro";
+import { Image } from "astro:assets";
 
 changeLanguage("en");
 
 setDefaultNamespace("process");
+
+import designImg from "../assets/process/design.jpg";
+import developImg from "../assets/process/develop.jpg";
+import experimentingImg from "../assets/process/experimenting.jpg";
+import researchImg from "../assets/process/research.jpg";
+import talkingImg from "../assets/process/talking.jpg";
 ---
 
-<!-- This page is going to be a box that we follow and slowly goes through all the steps -->
-
 <MainPage>
-    <div class="project-box">
-        <div class="eater" />
-        <div id="cog-1" class="cog-wrap">
-            <Cog size={10} />
+    <div class="grid-container">
+        <div class="project-box" slot="before-main">
+            <div class="eater" />
+            <div id="cog-1" class="cog-wrap">
+                <Cog size={10} />
+            </div>
+            <div id="cog-2" class="cog-wrap">
+                <Cog size={12} clockwise={false} />
+            </div>
+            <div id="cog-3" class="cog-wrap">
+                <Cog size={16} offset={16} />
+            </div>
+    
+            <div id="cog-4" class="cog-wrap">
+                <Cog size={10} />
+            </div>
+            <div id="cog-5" class="cog-wrap">
+                <Cog size={8} clockwise={false} offset={25} />
+            </div>
+    
+            <div id="cog-6" class="cog-wrap">
+                <Cog size={9} />
+            </div>
+    
+            <div class="style" />
+    
+            <div class="drop" id="drop-2" style="background-color: rgb(109, 151, 92); color:rgb(255, 255, 255);" />
+            <div class="drop" id="drop-3" style="background-color: rgb(51, 51, 51); color:rgb(247, 129, 217);" />
+            <div class="drop" id="drop-1" style="background-color: rgb(253, 220, 29); color:rgb(0, 0, 0);" />
+    
+            <p class="display">{t('general.project')}</p>
+            <button>{t('general.projectBtn')}</button>
+    
+            <div class="end-text">
+                <p>{t('general.end-text')}</p>
+                <a href={localizePath('/about#contact')}>{t('general.end-cta')}</a>
+            </div>
         </div>
-        <div id="cog-2" class="cog-wrap">
-            <Cog size={12} clockwise={false} />
+    
+        <div id="step-image">
+            <Image src={researchImg} alt="Man researching on a board" />
+            <Image src={talkingImg} alt="Two people talking on a bench" />
+            <Image src={experimentingImg} alt="Person experimenting with a plant" />
+            <Image src={designImg} alt="Colorful chalks" />
+            <Image src={developImg} alt="Person developing a website" />
         </div>
-        <div id="cog-3" class="cog-wrap">
-            <Cog size={16} offset={16} />
-        </div>
-
-        <div id="cog-4" class="cog-wrap">
-            <Cog size={10} />
-        </div>
-        <div id="cog-5" class="cog-wrap">
-            <Cog size={8} clockwise={false} offset={25} />
-        </div>
-
-        <div id="cog-6" class="cog-wrap">
-            <Cog size={9} />
-        </div>
-
-        <div class="style" />
-
-        <div class="drop" id="drop-1" style="background-color: rgb(243, 243, 243); color:rgb(24, 90, 33);" />
-        <div class="drop" id="drop-2" style="background-color: rgb(109, 151, 92); color:rgb(255, 255, 255);" />
-        <div class="drop" id="drop-3" style="background-color: rgb(51, 51, 51); color:rgb(247, 129, 217);" />
-
-        <p class="display">{t('general.project')}</p>
-        <button>{t('general.projectBtn')}</button>
+    
+        <main>
+            <section class="process-section">
+                <h2 id="step-1">{t('step-1.title')}</h2>
+                <Fragment set:html={t('step-1.texts')} />
+                <Separator />
+            </section>
+        
+        
+            <section class="process-section">
+                <h2 id="step-2" data-text-change={`${t('step-2.text-change')}`}>
+                    Step 2: Chatting
+                </h2>
+                <Fragment set:html={t('step-2.texts')} />
+                <Separator />
+            </section>
+        
+        
+            <section class="process-section">
+                <h2 id="step-3" data-text-change={`${t('step-3.text-change')}`}>
+                    {t('step-3.title')}
+                </h2>
+                <Fragment set:html={t('step-3.texts')} />
+                <Separator />
+            </section>
+        
+        
+            <section class="process-section">
+                <h2 id="step-4" data-text-change={`${t('step-4.text-change')}`}>
+                    {t('step-4.title')}
+                </h2>
+                <Fragment set:html={t('step-4.texts')} />
+                <Separator />
+            </section>
+        
+        
+            <section class="process-section">
+                <h2 id="step-5" data-text-change={`${t('step-5.text-change')}`}>
+                    {t('step-5.title')}
+                </h2>
+                <Fragment set:html={t('step-5.texts')} />
+            </section>
+        
+            <div class="process-end" />
+        </main>
     </div>
-
-    <section class="process-section">
-        <h2 id="step-1">{t('step-1.title')}</h2>
-        <Fragment set:html={t('step-1.texts')} />
-    </section>
-
-    <Separator />
-
-    <section class="process-section">
-        <h2 id="step-2" data-text-change={`${t('step-2.text-change')}`}>
-            Step 2: Chatting
-        </h2>
-        <Fragment set:html={t('step-2.texts')} />
-    </section>
-
-    <Separator />
-
-    <section class="process-section">
-        <h2 id="step-3" data-text-change={`${t('step-3.text-change')}`}>
-            {t('step-3.title')}
-        </h2>
-        <Fragment set:html={t('step-3.texts')} />
-    </section>
-
-    <Separator />
-
-    <section class="process-section">
-        <h2 id="step-4" data-text-change={`${t('step-4.text-change')}`}>
-            {t('step-4.title')}
-        </h2>
-        <Fragment set:html={t('step-4.texts')} />
-    </section>
-
-    <Separator />
-
-    <section class="process-section">
-        <h2 id="step-5" data-text-change={`${t('step-5.text-change')}`}>
-            {t('step-5.title')}
-        </h2>
-        <Fragment set:html={t('step-5.texts')} />
-    </section>
 
     <script>
         import '../scripts/cogs'
@@ -98,7 +123,7 @@ setDefaultNamespace("process");
 <style>
 	.project-box {
         position: relative;
-        width: min(20rem, 95vw);
+        width: min(20rem, 90vw);
         height: 12rem;
         margin: 5rem auto;
         font-family: 'Courier New', monospace;
@@ -111,7 +136,7 @@ setDefaultNamespace("process");
         position: absolute;
         top: -10rem;
         height: calc(100% + 10rem);
-        width: 100vw;
+        width: 200vw;
         /* When things don't have time to disappear, they will thanks to that eater */
         background: linear-gradient(180deg, var(--background-1) 10rem, #ffffff00);
         z-index: 1;
@@ -128,6 +153,12 @@ setDefaultNamespace("process");
         margin-top: 3rem;
         font-size: 1.5rem;
         z-index: 2;
+        text-align: center;
+    }
+    .end-text {
+        z-index: 2;
+        margin-top: 2rem;
+        font-weight: 500;
     }
     .project-box button {
         box-sizing: content-box;
@@ -164,17 +195,21 @@ setDefaultNamespace("process");
         border: var(--line-width) solid var(--text-color);
     }
 
+    #step-image {
+        display: none;
+    }
+
     .process-section {
-        margin: 5rem auto;
         display: flex;
         flex-direction: column;
         gap: 1rem;
-        width: min(40rem, 90vw);
+        width: min(40rem, 95vw);
         min-height: 30rem;
+        margin: 0 auto;
     }
 
     h2 {
-        font-size: 3rem;
+        font-size: 2rem;
         text-align: center;
     }
 
@@ -185,5 +220,49 @@ setDefaultNamespace("process");
         margin: 0 auto;
         margin-top: 5rem;
         text-align: center;
+    }
+
+    @media screen and (min-width: 1100px){
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 30rem 1fr;
+            gap: 2rem;
+        }
+        main {
+            grid-area: 2 / 1 / 3 / 2;
+        }
+        .project-box {
+            grid-area: 1 / 2 / 2 / 3;
+        }
+        #step-image {
+            grid-area: 2 / 2 / 3 / 3;
+            display: block;
+            width: 100%;
+            height: 50vh;
+        }
+        #step-image img {
+            position: absolute;
+            width: unset;
+            height: unset;
+            max-width: 90%;
+            max-height: 90%;
+        }
+        h2 {
+            font-size: 4rem;
+            margin: 3rem auto;
+        }
+        .process-section {
+            margin: 0 2rem;
+        }
+        :global(.process-section p) {
+            max-width: 90vw;
+            margin-top: 8rem;
+            font-size: 2rem;
+        }
+    }
+
+    .process-end {
+        height: 50vh;
     }
 </style>

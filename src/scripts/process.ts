@@ -8,10 +8,22 @@ document.addEventListener('astro:page-load', () => {
         scrollTrigger: {
             trigger: '.project-box',
             start: 'bottom 300',
-            end: '+=5000 bottom',
+            end: () => `+=${document.body.clientHeight} bottom`,
+            pin: true,
+            pinSpacing: false,
+            invalidateOnRefresh: true,
+        }
+    });
+
+    gsap.to('#step-image', {
+        scrollTrigger: {
+            trigger: '#step-image',
+            start: 'bottom 95%',
+            end: () => `+=${document.body.clientHeight} bottom`,
             scrub: 1,
             pin: true,
             pinSpacing: false,
+            invalidateOnRefresh: true,
         }
     });
 
@@ -42,6 +54,20 @@ document.addEventListener('astro:page-load', () => {
         };
     }
 
+    const images = gsap.utils.toArray('#step-image img');
+    images.forEach((image, index) => {
+        const img = image as HTMLImageElement;
+        gsap.fromTo(img, {
+            scale: 0.5,
+            opacity: 0,
+            y: 100,
+        }, {
+            scrollTrigger: titleTrigger(index+1),
+            scale: 1,
+            opacity: 1,
+        });
+    });
+
     // Step 1
     gsap.from('.cog-wrap', {
         scrollTrigger: titleTrigger(1),
@@ -69,16 +95,16 @@ document.addEventListener('astro:page-load', () => {
         scrollTrigger: {
             trigger: '#step-3',
             start: `top 70%`,
-            end: 'top 10%',
+            end: 'center top',
             scrub: 1,
         },
     });
-    const registerCogConfig = (start: string, config: { [key: string]: string }[]) => {
+    const registerCogConfig = (config: { [key: string]: string }[]) => {
         config.forEach((position, index) => {
             tl.to(`#cog-${index+1}`, { ...position }, index === 0 ? '>+.25' : '<');
         });
     }
-    registerCogConfig('70%', [
+    registerCogConfig([
         { left: '-2rem', top: '3rem' },
         { left: '1rem', top: '1rem' },
         { left: '6.3rem', top: '-2.8rem' },
@@ -86,8 +112,8 @@ document.addEventListener('astro:page-load', () => {
         { right: '-1.5rem', bottom: '3.5rem' },
         { right: '-0.5rem', top: '-1rem' },
     ]);
-    tl.to('.project-box button', { x: 70 }, '<');
-    registerCogConfig('40%', [
+    tl.to('.project-box button', { x: 70, y: -20 }, '<');
+    registerCogConfig([
         { left: '2.8rem', top: '10rem' },
         { left: '-1rem', top: '6rem' },
         { left: '-2rem', top: '-0.8rem' },
@@ -95,21 +121,22 @@ document.addEventListener('astro:page-load', () => {
         { right: '1rem', bottom: '-0.7rem' },
         { right: '2rem', top: '-1rem' },
     ]);
-    tl.to('.project-box button', { x: -30, scale: 1.3 }, '<');
+    tl.to('.project-box button', { x: -50, y: 0 }, '<');
     
     // Step 4
     const drops = gsap.utils.toArray('.drop');
     const dropTl = gsap.timeline({
         scrollTrigger: {
-        trigger: '#step-4',
-        start: `top 70%`,
-        end: 'top top',
-        scrub: 1.5,
-    }});
+            trigger: '#step-4',
+            start: `bottom 70%`,
+            end: 'bottom top',
+            scrub: 1.5,
+        }
+    });
     const buttonStyles: { [key: string]: string }[] = [
-        { backgroundColor: '#5a41e5', color: '#ffffff', borderRadius: '0.5rem', border: 'none', padding: '0.4rem 1rem' },
-        { backgroundColor: '#fac411', color: 'black', borderRadius: '0.25rem' },
-        { backgroundColor: '#ec49f5', color: 'white', borderRadius: '20rem', boxShadow: 'inset .1rem .1rem 0.2rem #fff8, inset -.1rem -.1rem 0.2rem #0005' },
+        { backgroundColor: '#fac411', color: 'black', borderRadius: '0', border: '0.08rem solid #000', padding: '0.4rem 1rem'  },
+        { backgroundColor: '#ec49f5', color: 'white', borderRadius: '20rem', border: 'none', boxShadow: 'inset .1rem .1rem 0.2rem #fff8, inset -.1rem -.1rem 0.2rem #0005' },
+        { backgroundColor: '#5a41e5', color: '#ffffff', borderRadius: '0.5rem', boxShadow: '.2rem .2rem .1rem #0008'},
     ]
     drops.forEach((drop, index) => {
         const d = drop as HTMLElement;
@@ -119,7 +146,7 @@ document.addEventListener('astro:page-load', () => {
         const prevBgColor = prevD ? prevD.style.backgroundColor : 'white';
         
         // Animate the drop and the background circle animation
-        dropTl.from(d, { y: '-=200', duration: 1, ease: 'power1.in' }, '>+.5')
+        dropTl.from(d, { y: '-=200', opacity: 0, duration: 1, ease: 'power1.in' }, '>+.5')
             .fromTo('.style', {
                 backgroundImage: `radial-gradient(circle, ${bgColor} 0%, ${prevBgColor} 0%)`
             }, {
@@ -129,6 +156,31 @@ document.addEventListener('astro:page-load', () => {
             }, '>')
             .to(d, { scale: 0 }, '<')
             .to('.project-box button', { ...buttonStyles[index] }, '<')
-            .to('.project-box', { color: color, fontFamily: 'unset', duration: 0.3 }, '<');
+            .to('.cog .circle', { backgroundColor: buttonStyles[index].backgroundColor, stagger: 0.1 }, '<')
+            .to('.project-box', { color: color, fontWeight: 700, fontFamily: 'unset', duration: 0.3 }, '<');
+    });
+
+    // Step 5
+    gsap.to('.project-box', {
+        scrollTrigger: {
+            trigger: '.process-end',
+            start: 'top 80%',
+            end: 'top 40%',
+            scrub: 1,
+        },
+        height: '20rem',
+        maxHeight: '20rem',
+        scale: 1.1,
+    });
+    gsap.from('.end-text > *', {
+        scrollTrigger: {
+            trigger: '.process-end',
+            start: 'top 60%',
+            end: 'top 40%',
+            toggleActions: 'play none none reverse',
+        },
+        text: '',
+        duration: .6,
+        stagger: 0.5,
     });
 });

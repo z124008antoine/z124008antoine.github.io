@@ -10,24 +10,22 @@ import { t } from "i18next";
 <title slot="head">{t("meta.title")}</title>
 
 <Layout>
-    <!--
-			Header, common to every page
-			It takes up the full height of the viewport
-		-->
-		<header>
-			<h1 transition:animate={slideCustom(1000)} transition:name="main page title">
-				{t("meta.title-long")}
-			</h1>
-			<p class="scroll-cta" transition:animate={slideCustom(1000, 'right')} transition:name="main page scroll-cta">
-				{t("meta.scroll-cta")}
-			</p>
-			<Separator animate />
-			<Plants />
-		</header>
+	<!--
+		Header, common to every page
+		It takes up the full height of the viewport
+	-->
+	<header>
+		<h1 transition:animate={slideCustom(1000)} transition:name="main page title">
+			{t("meta.title-long")}
+		</h1>
+		<p class="scroll-cta" transition:animate={slideCustom(1000, 'right')} transition:name="main page scroll-cta">
+			{t("meta.scroll-cta")}
+		</p>
+		<Separator animate />
+		<Plants />
+	</header>
 
-		<main>
-			<slot />
-		</main>
+	<slot />
 </Layout>
 
 <style>

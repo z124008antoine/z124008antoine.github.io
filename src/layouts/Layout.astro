@@ -40,7 +40,10 @@ import Scroll from "../components/Scroll.astro";
 		</script>
 		
 		<NavBar transition:persist />
-		<slot />
+
+		<div class="body-wrap">
+			<slot />
+		</div>
 		<Scroll />
 
 		<div id="zoom-container" transition:persist />
@@ -84,6 +87,10 @@ import Scroll from "../components/Scroll.astro";
 			background-size: cover;
 			font-family: "Montserrat", sans-serif;
 			overflow-x: hidden;
+		}
+		.body-wrap {
+			width: 100%;
+			overflow: hidden;
 		}
 
 		#zoom-container {
