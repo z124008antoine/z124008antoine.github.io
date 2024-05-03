@@ -2,7 +2,6 @@
 import { changeLanguage, setDefaultNamespace, t } from "i18next";
 import MainPage from "../layouts/MainPage.astro";
 import Cog from "../components/decorations/Cog.astro";
-import { Trans } from "astro-i18next/components";
 import Separator from "../components/decorations/Separator.astro";
 
 changeLanguage("en");
@@ -38,13 +37,12 @@ setDefaultNamespace("process");
 
         <div class="style" />
 
-        <div class="drop" id="drop-1" style="background-color: red; color:aliceblue;" />
-        <div class="drop" id="drop-2" style="background-color: blue; color:brown;" />
-        <div class="drop" id="drop-3" style="background-color: purple; color:green;" />
+        <div class="drop" id="drop-1" style="background-color: rgb(243, 243, 243); color:rgb(24, 90, 33);" />
+        <div class="drop" id="drop-2" style="background-color: rgb(109, 151, 92); color:rgb(255, 255, 255);" />
+        <div class="drop" id="drop-3" style="background-color: rgb(51, 51, 51); color:rgb(247, 129, 217);" />
 
-        <p class="display">
-            Project
-        </p>
+        <p class="display">{t('general.project')}</p>
+        <button>{t('general.projectBtn')}</button>
     </div>
 
     <section class="process-section">
@@ -70,11 +68,22 @@ setDefaultNamespace("process");
         <Fragment set:html={t('step-3.texts')} />
     </section>
 
+    <Separator />
+
     <section class="process-section">
         <h2 id="step-4" data-text-change={`${t('step-4.text-change')}`}>
             {t('step-4.title')}
         </h2>
         <Fragment set:html={t('step-4.texts')} />
+    </section>
+
+    <Separator />
+
+    <section class="process-section">
+        <h2 id="step-5" data-text-change={`${t('step-5.text-change')}`}>
+            {t('step-5.title')}
+        </h2>
+        <Fragment set:html={t('step-5.texts')} />
     </section>
 
     <script>
@@ -94,7 +103,7 @@ setDefaultNamespace("process");
         margin: 5rem auto;
         font-family: 'Courier New', monospace;
         display: flex;
-        justify-content: center;
+        flex-direction: column;
         align-items: center;
         z-index: 2;
     }
@@ -116,9 +125,20 @@ setDefaultNamespace("process");
         border: solid var(--line-width) var(--text-color);
     }
     .project-box .display {
+        margin-top: 3rem;
         font-size: 1.5rem;
         z-index: 2;
     }
+    .project-box button {
+        box-sizing: content-box;
+        z-index: 2;
+        font-size: 1.3rem;
+        margin-top: 2rem;
+        font-family: inherit;
+        border: solid 1px black;
+        border-radius: .2rem;
+    }
+
     .cog-wrap {
         position: absolute;
         z-index: 1;
@@ -141,6 +161,7 @@ setDefaultNamespace("process");
         height: 1rem;
         border-radius: 50%;
         z-index: 1;
+        border: var(--line-width) solid var(--text-color);
     }
 
     .process-section {
@@ -160,6 +181,9 @@ setDefaultNamespace("process");
     :global(.process-section p) {
         font-size: 1.5rem;
         line-height: 1.5;
+        max-width: 20rem;
+        margin: 0 auto;
         margin-top: 5rem;
+        text-align: center;
     }
 </style>

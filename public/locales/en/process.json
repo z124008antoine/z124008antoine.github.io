@@ -5,6 +5,10 @@
         "description": "View my way of working, how I'm going to solve your problem.",
         "scroll-cta": "Scroll down to see how I handle projects"
     },
+    "general": {
+        "project": "Project",
+        "projectBtn": "Launch"
+    },
     "step-1": {
         "title": "Step 1: Research",
         "texts": "<p>I prefer being well-informed about what I work on.</p><p>If your field is new to me, I'll study it to better understand your needs.</p>"
@@ -15,8 +19,15 @@
         "text-change": "Awesome innovation"
     },
     "step-3" : {
-        "title": "Experimenting",
-        "texts": "<p>Let's not dive into design right away.</p><p>I first work on a prototype to test the waters.</p><p>It's a great way to see if we're on the right track.</p>",
-        "text-change": "|____Prototype____|<br>|____@______&_____|<br>|____*$____^?_____|"
+        "title": "Step 3: Experimenting",
+        "texts": "<p>Let's not dive into design right away.</p><p>I first work on a prototype to test the waters.</p><p>It's a great way to see if we're on the right track.</p>"
+    },
+    "step-4": {
+        "title": "Step 4: Design",
+        "texts": "<p>This is the part where I'll bring you something unique.</p><p>I'm not trying to make it good for everyone.</p><p>I want to make it <em>perfect</em> for the <strong>right</strong> people.</p>"
+    },
+    "step-5": {
+        "title": "Step 5: Development",
+        "texts": "<p>PASSION</p><p>MOTIVATION</p><p>DEDICATION</p>"
     }
 }
