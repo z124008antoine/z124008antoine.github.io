@@ -12,24 +12,24 @@
         "end-cta": "Contact me"
     },
     "step-1": {
-        "title": "Step 1: Research",
+        "title": "Research",
         "texts": "<p>I prefer being well-informed about what I work on.</p><p>If your field is new to me, I'll study it to better understand your needs.</p>"
     },
     "step-2": {
-        "title": "Step 2: Chatting",
+        "title": "Chatting",
         "texts": "<p>If we work together, we'll talk about <strong>you</strong>.</p><p>It's not about doing my project for you, it's about <strong>your</strong> project.</p><p>You know your business better than anyone else, so I want to learn about you!</p>",
         "text-change": "Awesome innovation"
     },
     "step-3" : {
-        "title": "Step 3: Experimenting",
+        "title": "Experimenting",
         "texts": "<p>Let's not dive into design right away.</p><p>I first work on a prototype to test the waters.</p><p>It's a great way to see if we're on the right track.</p>"
     },
     "step-4": {
-        "title": "Step 4: Design",
+        "title": "Design",
         "texts": "<p>I'm french, I love bold cuisine.</p><p>I'm not trying to make it good for everyone.</p><p>I want to make it <em>perfect</em> for the <strong>right</strong> people.</p>"
     },
     "step-5": {
-        "title": "Step 5: Development",
+        "title": "Development",
         "texts": "<p>PASSION</p><p>MOTIVATION</p><p>DEDICATION</p>"
     }
 }

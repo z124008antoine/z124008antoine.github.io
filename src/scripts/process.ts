@@ -3,27 +3,15 @@ import TextPlugin from "gsap/TextPlugin";
 document.addEventListener('astro:page-load', () => {
     gsap.registerPlugin(TextPlugin);
 
+    const largeScreen = () => window.matchMedia('(min-width: 1100px)').matches;
     // Pin the project box
     gsap.to('.project-box', {
         scrollTrigger: {
             trigger: '.project-box',
-            start: 'bottom 300',
+            start: () => largeScreen() ? 'center 50%' : 'bottom 300',
             end: () => `+=${document.body.clientHeight} bottom`,
             pin: true,
             pinSpacing: false,
-            invalidateOnRefresh: true,
-        }
-    });
-
-    gsap.to('#step-image', {
-        scrollTrigger: {
-            trigger: '#step-image',
-            start: 'bottom 95%',
-            end: () => `+=${document.body.clientHeight} bottom`,
-            scrub: 1,
-            pin: true,
-            pinSpacing: false,
-            invalidateOnRefresh: true,
         }
     });
 
@@ -35,7 +23,7 @@ document.addEventListener('astro:page-load', () => {
             scrollTrigger: {
                 trigger: text,
                 start: 'bottom 95%',
-                end: 'bottom 350',
+                end: () => largeScreen() ? 'bottom 100' : 'bottom 350',
                 toggleActions: 'play reverse play reverse',
             },
             scale: 0.5,
