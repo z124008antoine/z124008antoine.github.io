@@ -4,6 +4,7 @@ import i18next from "i18next";
 import { HeadHrefLangs } from "astro-i18next/components";
 import NavBar from "../components/NavBar.astro";
 import Scroll from "../components/Scroll.astro";
+import MouseFollower from "../components/decorations/MouseFollower.astro";
 ---
 
 <!DOCTYPE html>
@@ -44,7 +45,9 @@ import Scroll from "../components/Scroll.astro";
 		<div class="body-wrap">
 			<slot />
 		</div>
+
 		<Scroll />
+		<MouseFollower />
 
 		<div id="zoom-container" transition:persist />
 	</body>

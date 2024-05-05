@@ -1,0 +1,44 @@
+<div class="mouse-dot" />
+
+<script>
+    document.addEventListener('astro:page-load', () => {
+        const mouseDot = document.querySelector('.mouse-dot') as HTMLElement;
+        let mouseDotVisible = false;
+        document.addEventListener('mousemove', (e) => {
+            if (!mouseDotVisible)
+            {
+                mouseDotVisible = true;
+                mouseDot.style.opacity = '1';
+            }
+            if (mouseDotVisible) {
+                gsap.to(mouseDot, {
+                    x: e.clientX,
+                    y: e.clientY,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+                mouseDotVisible = true;
+            }
+        });
+    });
+
+</script>
+
+<style>
+    .mouse-dot {
+        font-size: 15px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        width: 1em;
+        height: 1em;
+        background: transparent;
+        border-radius: 50%;
+        pointer-events: none;
+        transform: translate(-50%, -50%);
+        backdrop-filter: blur(10px) invert(1) sepia(1);
+        transition: opacity 0.3s;
+        z-index: 4;
+    }
+</style>
