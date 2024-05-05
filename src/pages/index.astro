@@ -36,46 +36,45 @@ projects.sort((a, b) => b.data.relevance - a.data.relevance);
 <style>
     .projects {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(min(40rem, 90vw), 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(min(30rem, 90vw), 1fr));
         justify-content: center;
         align-items: center;
         gap: 1rem;
         width: 100vw;
         padding: 8rem 0;
+        background-color: var(--primary-color);
     }
 	h2 {
-        margin: 1rem .5rem;
+        color: var(--primary-text-color);
+        margin: 1rem .5rem 0 .5rem;
         font-size: 3rem;
         font-weight: 400;
         font-family: "Roxie Rossa", serif;
-        border: solid var(--line-width) var(--text-color);
-        border-right: none;
-        border-left: none;
         width: fit-content;
         padding: .25rem 1rem;
     }
 
     .project-card {
-        width: min(90%, 40rem);
-        margin: auto;
-        color: var(--text-color);
+        width: min(90%, 30rem);
+        margin: 5rem auto;
         text-decoration: none;
+        color: var(--text-color);
     }
 
     .project-text {
-        font-size: 1.2rem;
+        color: var(--primary-gray);
+        font-size: 1.4rem;
         line-height: 1.5;
-        border: solid var(--line-width) var(--text-color);
         border-top: none;
         border-bottom: none;
         padding: 1rem;
-        width: min(90%, 30rem);
-        margin: 1rem auto;
+        width: min(95%, 40rem);
+        margin: 0 auto;
     }
 
     .project-cover-wrap {
         width: max(min(30rem, 90vw), 100%);
-        height: min(30rem, 90vw);
+        height: min(20rem, 80vw);
     }
     .project-cover {
         width: 100%;

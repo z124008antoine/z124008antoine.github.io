@@ -4,5 +4,10 @@
         "title-long": "Who am I?",
         "description": "Get to know me and my experience",
         "scroll-cta": "Scroll down to discover more about me!"
+    },
+    "profile": {
+        "occupation": "Student at EPITA",
+        "location": "Strasbourg, France",
+        "email": "an.blumenroeder@gmail.com"
     }
 }

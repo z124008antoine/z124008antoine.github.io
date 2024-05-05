@@ -46,18 +46,19 @@ const { Content } = await entry.render();
 
 
 <style>
+    body {
+        background-color: var(--primary-color);
+    }
 	.blog-body {
-		padding: 20px;
+		padding: 3rem 0 10rem 0;
 	}
     h1 {
+        color: var(--primary-text-color);
         margin: 5rem auto;
         margin-bottom: 8rem;
         font-size: 3rem;
         font-weight: 400;
         font-family: "Roxie Rossa", serif;
-        border: solid var(--line-width) var(--text-color);
-        border-right: none;
-        border-left: none;
         width: fit-content;
         padding: .25rem 1rem;
         z-index: 2;
@@ -81,5 +82,7 @@ const { Content } = await entry.render();
         font-size: 1.25rem;
         line-height: 1.5;
         padding: 1rem;
+        --text-color: var(--primary-gray);
+        color: var(--text-color);
     }
 </style>

@@ -1,6 +1,7 @@
 ---
-import { changeLanguage, setDefaultNamespace } from "i18next";
+import { changeLanguage, setDefaultNamespace, t } from "i18next";
 import MainPage from "../layouts/MainPage.astro";
+import { Image } from "astro:assets";
 
 changeLanguage("en");
 
@@ -8,9 +9,62 @@ setDefaultNamespace("about");
 ---
 
 <MainPage>
+    <main>
+        <div class="card profile-card">
+            <div class="profile-picture-wrap">
+            </div>
+            <div class="info">
+                <h3>Antoine Blumenroeder</h3>
+                <!-- Auto updating age -->
+                <p id="age"></p>
+                <script is:inline>
+                    const birthDate = new Date("2004-10-07");
+                    const age = Math.floor((new Date() - birthDate) / 31556952000);
+                    document.querySelector('#age').textContent = `Age: ${age}`;
+                </script>
+                <p>{t('profile.occupation')}</p>
+                <p>{t('profile.location')}</p>
+                <p><a href=`mailto:${t('profile.email')}`>{t('profile.email')}</a></p>
+            </div>
+        </div>
+        <section>
+            <h2>Hello</h2>
+        </section>
+    </main>
     
 </MainPage>
 
 <style>
-	
+    main {
+        display: grid;
+        gap: 2rem;
+        justify-content: center;
+        align-self: center;
+        padding: 2rem;
+        min-height: 100vh;
+    }
+
+	.profile-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        padding:  3rem;
+        border: var(--line-width) solid var(--text-color);
+        height: fit-content;
+    }
+
+    .profile-picture-wrap {
+        width: 10rem;
+        height: 10rem;
+        border-radius: 50%;
+        overflow: hidden;
+        border: var(--line-width) solid var(--text-color);
+    }
+
+    .profile-picture {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
 </style>
