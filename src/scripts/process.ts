@@ -149,16 +149,19 @@ document.addEventListener('astro:page-load', () => {
     });
 
     // Step 5
-    gsap.to('.project-box', {
+    gsap.fromTo('.project-box', {
+        height: '12rem',
+        width: '20rem',
+    }, {
         scrollTrigger: {
             trigger: '.process-end',
             start: 'top 80%',
-            end: 'top 40%',
+            end: 'top 60%',
             scrub: 1,
         },
-        height: '20rem',
-        maxHeight: '20rem',
-        scale: 1.1,
+        height: '100%',
+        width: () => largeScreen() ? '41%' : '100%',
+        top: '0',
     });
     gsap.from('.end-text > *', {
         scrollTrigger: {

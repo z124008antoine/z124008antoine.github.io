@@ -2,8 +2,8 @@
 import { changeLanguage, setDefaultNamespace, t } from "i18next";
 import { localizePath } from "astro-i18next";
 import MainPage from "../layouts/MainPage.astro";
-import Cog from "../components/decorations/Cog.astro";
 import Separator from "../components/decorations/Separator.astro";
+import Cogs from "../components/decorations/Cogs.astro";
 
 changeLanguage("en");
 
@@ -12,41 +12,24 @@ setDefaultNamespace("process");
 
 <MainPage>
     <div id="process-container">
-        <div class="project-box" slot="before-main">
-            <div class="eater" />
-            <div id="cog-1" class="cog-wrap">
-                <Cog size={10} />
-            </div>
-            <div id="cog-2" class="cog-wrap">
-                <Cog size={12} clockwise={false} />
-            </div>
-            <div id="cog-3" class="cog-wrap">
-                <Cog size={16} offset={16} />
-            </div>
-    
-            <div id="cog-4" class="cog-wrap">
-                <Cog size={10} />
-            </div>
-            <div id="cog-5" class="cog-wrap">
-                <Cog size={8} clockwise={false} offset={25} />
-            </div>
-    
-            <div id="cog-6" class="cog-wrap">
-                <Cog size={9} />
-            </div>
-    
-            <div class="style" />
-    
-            <div class="drop" id="drop-2" style="background-color: rgb(109, 151, 92); color:rgb(255, 255, 255);" />
-            <div class="drop" id="drop-3" style="background-color: rgb(51, 51, 51); color:rgb(247, 129, 217);" />
-            <div class="drop" id="drop-1" style="background-color: rgb(253, 220, 29); color:rgb(0, 0, 0);" />
-    
-            <p class="display">{t('general.project')}</p>
-            <button>{t('general.projectBtn')}</button>
-    
-            <div class="end-text">
-                <p>{t('general.end-text')}</p>
-                <a href={localizePath('/about#contact')}>{t('general.end-cta')}</a>
+        <div id="project-box-wrap">
+            <div class="project-box" slot="before-main">
+                <div class="eater" />
+                <Cogs />
+        
+                <div class="style" />
+        
+                <div class="drop" id="drop-2" style="background-color: rgb(109, 151, 92); color:rgb(255, 255, 255);" />
+                <div class="drop" id="drop-3" style="background-color: rgb(51, 51, 51); color:rgb(247, 129, 217);" />
+                <div class="drop" id="drop-1" style="background-color: rgb(253, 220, 29); color:rgb(0, 0, 0);" />
+        
+                <p class="display">{t('general.project')}</p>
+                <button>{t('general.projectBtn')}</button>
+        
+                <div class="end-text">
+                    <p>{t('general.end-text')}</p>
+                    <a href={localizePath('/about#contact')}>{t('general.end-cta')}</a>
+                </div>
             </div>
         </div>
 
@@ -95,10 +78,6 @@ setDefaultNamespace("process");
             <div class="process-end" />
         </main>
     </div>
-
-    <script>
-        import '../scripts/cogs'
-    </script>
 </MainPage>
 
 <script>
@@ -114,12 +93,25 @@ setDefaultNamespace("process");
     main {
         background-color: var(--secondary-color);
         --text-color: var(--secondary-gray);
+        width: 100%;
+    }
+    #project-box-wrap {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        background-color: var(--secondary-color);
     }
 	.project-box {
-        position: relative;
-        width: min(20rem, 90vw);
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 20rem;
         height: 12rem;
-        margin: 15vh auto;
+        max-height: unset !important;
+        max-width: unset !important;
+        margin: 15vh 0;
         font-family: 'Courier New', monospace;
         display: flex;
         flex-direction: column;
@@ -132,7 +124,7 @@ setDefaultNamespace("process");
         height: calc(100% + 10rem);
         width: 200vw;
         /* When things don't have time to disappear, they will thanks to that eater */
-        background: linear-gradient(180deg, var(--background-1) 10rem, #ffffff00);
+        background: linear-gradient(180deg, var(--secondary-color) 10rem, #ffffff00);
         z-index: 1;
     }
     .project-box .style {
@@ -163,19 +155,6 @@ setDefaultNamespace("process");
         border: solid 1px black;
         border-radius: .2rem;
     }
-
-    .cog-wrap {
-        position: absolute;
-        z-index: 1;
-    }
-    #cog-1 { left: 8rem; top: -2rem; }
-    #cog-2 { left: 2.8rem; top: -1rem; }
-    #cog-3 { left: -2rem; top: 3rem; }
-    
-    #cog-4 { right: 2.2rem; bottom: -1rem; }
-    #cog-5 { right: -1.5rem; bottom: -1.5rem; }
-
-    #cog-6 { right: -1rem; top: 3rem; }
 
     .drop {
         position: absolute;
@@ -221,6 +200,10 @@ setDefaultNamespace("process");
             flex-direction: row-reverse;
             align-items: flex-start;
             justify-content: flex-end;
+        }
+        #project-box-wrap {
+            width: 40%;
+            background: none;
         }
         .project-box {
             margin-top: 30vh;
