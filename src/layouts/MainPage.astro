@@ -15,12 +15,14 @@ import { t } from "i18next";
 		It takes up the full height of the viewport
 	-->
 	<header>
-		<h1 class="main-page-title" transition:animate={slideCustom(1000)} transition:name="main page title">
-			{t("meta.title-long")}
-		</h1>
-		<div class="scroll-cta" transition:animate={slideCustom(1000, 'right')} transition:name="main page scroll-cta">
-			<p>{t("meta.scroll-cta")}</p>
-			<Separator animate />
+		<div class="header-text">
+			<h1 class="main-page-title" transition:animate={slideCustom(1000)} transition:name="main page title">
+				{t("meta.title-long")}
+			</h1>
+			<div class="scroll-cta" transition:animate={slideCustom(1000, 'right')} transition:name="main page scroll-cta">
+				<p>{t("meta.scroll-cta")}</p>
+				<Separator animate />
+			</div>
 		</div>
 		<Plants />
 	</header>
@@ -29,20 +31,17 @@ import { t } from "i18next";
 </Layout>
 
 <script>
-	const scrollTrigger = {
-		trigger: 'body',
-		start: 'top top',
-		end: '+=600 top',
-		scrub: 1,
-	};
 	document.addEventListener('astro:page-load', () => {
-		gsap.to('.main-page-title', {
-			scrollTrigger,
-			y: '150',
-		});
-		gsap.to('.scroll-cta', {
-			scrollTrigger,
-			y: '120',
+	  	gsap.to('.header-text', {
+			scrollTrigger: {
+				trigger: 'body',
+				start: 'top top',
+				end: () => `+=${window.innerHeight} top`,
+				scrub: true,
+				markers: true,
+			},
+			y: '60vh',
+			ease: "none",
 		});
 	});
 </script>
@@ -52,7 +51,6 @@ import { t } from "i18next";
 		font-family: "Roxie Rossa", serif;
 		font-size: 4rem;
 		text-align: center;
-		z-index: 5;
 		max-width: 90vw;
 	}
 	@media screen and (min-width: 1000px) {
@@ -69,13 +67,17 @@ import { t } from "i18next";
 
 	header {
 		position: relative;
-		height: calc(100vh - var(--full-nav-height));
+		height: 100vh;
 		overflow: hidden;
+		z-index: 3;
+	}
+
+	.header-text {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		z-index: 3;
+		height: 100%;
 	}
 
 	main {

@@ -51,11 +51,11 @@ const positions: { src: ImageMetadata, style: string, className: string }[] = [
             end: 'bottom top',
             scrub: 1,
         };
-        gsap.to('.rotate-left', {
+        gsap.from('.rotate-left', {
             scrollTrigger,
             rotate: () => -25,
         });
-        gsap.to('.rotate-right', {
+        gsap.from('.rotate-right', {
             scrollTrigger,
             rotate: () => 25,
         });

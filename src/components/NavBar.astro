@@ -33,17 +33,13 @@ const pathname = Astro.site?.pathname;
 </nav>
 
 <style>
-    :root {
-        --nav-height: 63px;
-        --full-nav-height: 94px;
-    }
-
     .navigation {
-        position: sticky;
+        position: fixed;
         top: 0;
+        left: 50%;
+        transform: translateX(-50%);
         display: grid;
         width: clamp(20rem, 40rem, 100%);
-        margin: 1rem auto;
         grid-template-columns: repeat(3, 1fr);
         justify-items: center;
         align-items: center;
