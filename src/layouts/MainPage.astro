@@ -15,18 +15,37 @@ import { t } from "i18next";
 		It takes up the full height of the viewport
 	-->
 	<header>
-		<h1 transition:animate={slideCustom(1000)} transition:name="main page title">
+		<h1 class="main-page-title" transition:animate={slideCustom(1000)} transition:name="main page title">
 			{t("meta.title-long")}
 		</h1>
-		<p class="scroll-cta" transition:animate={slideCustom(1000, 'right')} transition:name="main page scroll-cta">
-			{t("meta.scroll-cta")}
-		</p>
-		<Separator animate />
+		<div class="scroll-cta" transition:animate={slideCustom(1000, 'right')} transition:name="main page scroll-cta">
+			<p>{t("meta.scroll-cta")}</p>
+			<Separator animate />
+		</div>
 		<Plants />
 	</header>
 
 	<slot />
 </Layout>
+
+<script>
+	const scrollTrigger = {
+		trigger: 'body',
+		start: 'top top',
+		end: '+=600 top',
+		scrub: 1,
+	};
+	document.addEventListener('astro:page-load', () => {
+		gsap.to('.main-page-title', {
+			scrollTrigger,
+			y: '150',
+		});
+		gsap.to('.scroll-cta', {
+			scrollTrigger,
+			y: '120',
+		});
+	});
+</script>
 
 <style>
     h1 {
@@ -52,7 +71,6 @@ import { t } from "i18next";
 		position: relative;
 		height: calc(100vh - var(--full-nav-height));
 		overflow: hidden;
-		border-bottom: var(--line-width) solid var(--text-color);
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
