@@ -19,9 +19,10 @@ setDefaultNamespace("process");
         
                 <div class="style" />
         
-                <div class="drop" id="drop-2" style="background-color: rgb(109, 151, 92); color:rgb(255, 255, 255);" />
-                <div class="drop" id="drop-3" style="background-color: rgb(51, 51, 51); color:rgb(247, 129, 217);" />
-                <div class="drop" id="drop-1" style="background-color: rgb(253, 220, 29); color:rgb(0, 0, 0);" />
+                <div class="drop" style="background-color: rgb(253, 220, 29); color:rgb(0, 0, 0);" />
+                <div class="drop" style="background-color: rgb(51, 51, 51); color:rgb(247, 129, 217);" />
+                <div class="drop" style="background-color: var(--secondary-color); color: var(--secondary-gray);" />
+
         
                 <p class="display">{t('general.project')}</p>
                 <button>{t('general.projectBtn')}</button>
@@ -112,7 +113,6 @@ setDefaultNamespace("process");
         max-height: unset !important;
         max-width: unset !important;
         margin: 15vh 0;
-        font-family: 'Courier New', monospace;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -145,6 +145,11 @@ setDefaultNamespace("process");
         z-index: 2;
         margin-top: 2rem;
         font-weight: 500;
+        font-size: 1.2rem;
+        text-align: center;
+    }
+    :global(.end-text a) {
+        color: inherit;
     }
     .project-box button {
         box-sizing: content-box;
@@ -152,8 +157,10 @@ setDefaultNamespace("process");
         font-size: 1.3rem;
         margin-top: 2rem;
         font-family: inherit;
+        padding: 0.5rem 1rem;
         border: solid 1px black;
-        border-radius: .2rem;
+        border-radius: 0;
+        background-color: white;
     }
 
     .drop {

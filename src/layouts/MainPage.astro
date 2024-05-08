@@ -38,7 +38,6 @@ import { t } from "i18next";
 				start: 'top top',
 				end: () => `+=${window.innerHeight} top`,
 				scrub: true,
-				markers: true,
 			},
 			y: '60vh',
 			ease: "none",
@@ -70,6 +69,7 @@ import { t } from "i18next";
 		height: 100vh;
 		overflow: hidden;
 		z-index: 3;
+		border-bottom: var(--line-width) solid var(--text-color);
 	}
 
 	.header-text {
@@ -78,9 +78,5 @@ import { t } from "i18next";
 		justify-content: center;
 		align-items: center;
 		height: 100%;
-	}
-
-	main {
-		position: relative;
 	}
 </style>

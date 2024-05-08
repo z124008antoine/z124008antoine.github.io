@@ -6,7 +6,6 @@ document.addEventListener('astro:page-load', () => {
         const size = Number(c.getAttribute('data-cog-size')) || 1;
         const offset = Number(c.getAttribute('data-cog-offset')) || 0;
         const direction = c.getAttribute('data-cog-clockwise') === '' ? 1 : -1;
-        console.log( c.getAttribute('data-cog-clockwise') );
         gsap.fromTo(c, {
                 rotate: offset
             }, {

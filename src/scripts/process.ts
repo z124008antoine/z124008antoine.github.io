@@ -117,14 +117,14 @@ document.addEventListener('astro:page-load', () => {
         scrollTrigger: {
             trigger: '#step-4',
             start: `bottom 70%`,
-            end: 'bottom top',
+            end: 'bottom -=20%',
             scrub: 1.5,
         }
     });
     const buttonStyles: { [key: string]: string }[] = [
-        { backgroundColor: '#fac411', color: 'black', borderRadius: '0', border: '0.08rem solid #000', padding: '0.4rem 1rem'  },
+        { backgroundColor: '#5a41e5', color: '#ffffff', borderRadius: '0.5rem', boxShadow: '.2rem .2rem .1rem #0008', padding: '0.4rem 1rem' },
         { backgroundColor: '#ec49f5', color: 'white', borderRadius: '20rem', border: 'none', boxShadow: 'inset .1rem .1rem 0.2rem #fff8, inset -.1rem -.1rem 0.2rem #0005' },
-        { backgroundColor: '#5a41e5', color: '#ffffff', borderRadius: '0.5rem', boxShadow: '.2rem .2rem .1rem #0008'},
+        { backgroundColor: 'white', color: 'black', borderRadius: '0' },
     ]
     drops.forEach((drop, index) => {
         const d = drop as HTMLElement;
@@ -145,7 +145,7 @@ document.addEventListener('astro:page-load', () => {
             .to(d, { scale: 0 }, '<')
             .to('.project-box button', { ...buttonStyles[index] }, '<')
             .to('.cog .circle', { backgroundColor: buttonStyles[index].backgroundColor, stagger: 0.1 }, '<')
-            .to('.project-box', { color: color, fontWeight: 700, fontFamily: 'unset', duration: 0.3 }, '<');
+            .to('.project-box', { color: color, duration: 0.3 }, '<');
     });
 
     // Step 5
@@ -162,6 +162,7 @@ document.addEventListener('astro:page-load', () => {
         height: '100%',
         width: () => largeScreen() ? '41%' : '100%',
         top: '0',
+        duration: .7,
     });
     gsap.from('.end-text > *', {
         scrollTrigger: {
