@@ -2,6 +2,10 @@
 
 <script>
     document.addEventListener('astro:page-load', () => {
+        // Mouse follower is disabled on mobile devices
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
+            return;
+    
         const mouseDot = document.querySelector('.mouse-dot') as HTMLElement;
         let mouseDotVisible = false;
         document.addEventListener('mousemove', (e) => {

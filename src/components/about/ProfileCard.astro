@@ -1,0 +1,69 @@
+---
+import { t } from "i18next";
+import { Image } from "astro:assets";
+import profile from "../../assets/face.jpg";
+---
+
+<div class="card profile-card">
+    <div class="profile-picture-wrap">
+        <Image class="profile-picture" src={profile} alt="Face of Antoine, brown hair and brown eyes" />
+    </div>
+    <div class="info">
+        <p class="name">Antoine Blumenroeder</p>
+        <!-- Auto updating age -->
+        <ul>
+            <li id="age"></li>
+            <script is:inline>
+                const birthDate = new Date("2004-10-07");
+                const age = Math.floor((new Date() - birthDate) / 31556952000);
+                document.querySelector('#age').textContent = `Age: ${age}`;
+            </script>
+            <li>{t('profile.occupation')}</li>
+            <li>{t('profile.location')}</li>
+            <li>mail: <a href=`mailto:${t('profile.email')}`>{t('profile.email')}</a></li>
+        </ul>
+    </div>
+</div>
+
+<style>
+    .profile-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        width: min(100%, 25rem);
+        padding: 2rem;
+    }
+
+    .profile-card .name {
+        margin: 0;
+        font-size: 2rem;
+        font-weight: 400;
+        text-align: center;
+    }
+    
+    .profile-card ul {
+        padding: 0;
+        margin-top: 3rem;
+    }
+
+    .profile-card li {
+        list-style: none;
+        margin-top: 1rem;
+        font-size: 1.1rem;
+    }
+
+
+    .profile-picture-wrap {
+        width: 12rem;
+        height: 12rem;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+
+    .profile-picture {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+</style>
