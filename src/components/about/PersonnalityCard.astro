@@ -3,17 +3,82 @@ import { t } from "i18next";
 ---
 
 <section>
-    <h2>{t("personnality.title-1")}</h2>
-    <ul>
-        <li>{t("personnality.adjectives.1")}</li>
-        <li>{t("personnality.adjectives.2")}</li>
-        <li>{t("personnality.adjectives.3")}</li>
-        <li>{t("personnality.adjectives.4")}</li>
-    </ul>
-    <h2>{t("personnality.title-2")}</h2>
-    <ul>
-        <li>{t("personnality.skills.1")}</li>
-        <li>{t("personnality.skills.2")}</li>
-        <li>{t("personnality.skills.3")}</li>
-    </ul>
+    <div class="category">
+        <h2>{t("personnality.title-1")}</h2>
+        <ul>
+            <li><span class="pre-personnality">01</span>{t("personnality.adjectives.1")}</li>
+            <li><span class="pre-personnality">02</span>{t("personnality.adjectives.2")}</li>
+            <li><span class="pre-personnality">03</span>{t("personnality.adjectives.3")}</li>
+            <li><span class="pre-personnality">04</span>{t("personnality.adjectives.4")}</li>
+        </ul>
+    </div>
+    <div class="category">
+        <h2>{t("personnality.title-2")}</h2>
+        <ul>
+            <li><span class="pre-personnality">01</span>{t("personnality.skills.1")}</li>
+            <li><span class="pre-personnality">02</span>{t("personnality.skills.2")}</li>
+            <li><span class="pre-personnality">03</span>{t("personnality.skills.3")}</li>
+        </ul>
+    </div>
+    <div class="category">
+        <h2>{t("personnality.title-3")}</h2>
+        <ul>
+            <li><span class="pre-personnality">01</span>{t("personnality.passions.1")}</li>
+            <li><span class="pre-personnality">02</span>{t("personnality.passions.2")}</li>
+            <li><span class="pre-personnality">03</span>{t("personnality.passions.3")}</li>
+        </ul>
+    </div>
 </section>
+
+<style>
+    section {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 2rem;
+        padding: 5vw;
+    }
+    .category {
+        width: min(100%, 25rem);
+        height: fit-content;
+    }
+
+    h2 {
+        font-size: 2rem;
+        font-family: 'Lora', serif;
+        margin: .5rem 0;
+        font-weight: 400;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+    li {
+        display: flex;
+        border-top: var(--line-width) solid var(--gray);
+    }
+    li:last-child {
+        border-bottom: var(--line-width) solid var(--gray);
+    }
+    .pre-personnality {
+        font-size: 0.8rem;
+        display: inline;
+        margin-right: .5rem;
+        position: relative;
+        top: 0.2rem;
+    }
+
+    li, .passion {
+        padding: .8rem;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        font-family: 'Lora', serif;
+    }
+
+     img {
+        width: unset;
+        height: unset;
+        max-width: 100%;
+    }
+</style>

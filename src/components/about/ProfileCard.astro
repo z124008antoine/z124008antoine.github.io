@@ -4,7 +4,7 @@ import { Image } from "astro:assets";
 import profile from "../../assets/face.jpg";
 ---
 
-<div class="card profile-card">
+<div class="profile-card">
     <div class="profile-picture-wrap">
         <Image class="profile-picture" src={profile} alt="Face of Antoine, brown hair and brown eyes" />
     </div>
@@ -12,58 +12,63 @@ import profile from "../../assets/face.jpg";
         <p class="name">Antoine Blumenroeder</p>
         <!-- Auto updating age -->
         <ul>
-            <li id="age"></li>
-            <script is:inline>
-                const birthDate = new Date("2004-10-07");
-                const age = Math.floor((new Date() - birthDate) / 31556952000);
-                document.querySelector('#age').textContent = `Age: ${age}`;
+            <span class="profile-pre">{t('profile.ageTitle')}</span><li id="age"></li>
+            <script is:inline data-astro-rerun>
+                var birthDate = new Date("2004-10-07");
+                var age = Math.floor((new Date() - birthDate) / 31556952000);
+                document.querySelector('#age').textContent = age;
             </script>
-            <li>{t('profile.occupation')}</li>
-            <li>{t('profile.location')}</li>
-            <li>mail: <a href=`mailto:${t('profile.email')}`>{t('profile.email')}</a></li>
+            <span class="profile-pre">{t('profile.occupationTitle')}</span><li>{t('profile.occupation')}</li>
+            <span class="profile-pre">{t('profile.locationTitle')}</span><li>{t('profile.location')}</li>
+            <span class="profile-pre">{t('profile.mailTitle')}</span><li><a href=`mailto:${t('profile.mail')}`>{t('profile.mail')}</a></li>
         </ul>
     </div>
 </div>
 
 <style>
-    .profile-card {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-        width: min(100%, 25rem);
-        padding: 2rem;
-    }
-
     .profile-card .name {
         margin: 0;
         font-size: 2rem;
         font-weight: 400;
         text-align: center;
+        font-family: 'Roxie Rossa', serif;
     }
     
     .profile-card ul {
         padding: 0;
         margin-top: 3rem;
+        width: 100%;
     }
 
+    .profile-pre {
+        font-size: 0.7em;  
+    }
+    
     .profile-card li {
         list-style: none;
-        margin-top: 1rem;
-        font-size: 1.1rem;
+        font-size: 1em;
+        font-family: 'Lora', serif;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
     }
-
 
     .profile-picture-wrap {
         width: 12rem;
         height: 12rem;
         border-radius: 50%;
         overflow: hidden;
+        margin: auto;
     }
 
     .profile-picture {
         width: 100%;
         height: 100%;
         object-fit: cover;
+    }
+
+    @media screen and (min-width: 1100px) {
+        .profile-card {
+            font-size: 1.4rem;
+        }
     }
 </style>

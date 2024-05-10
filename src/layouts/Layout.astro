@@ -57,9 +57,19 @@ import MouseFollower from "../components/decorations/MouseFollower.astro";
 		@font-face {
 			font-family: "Roxie Rossa";
 			src:
+				url("/fonts/Roxie rossa.ttf") format("truetype"),
 				url("/fonts/Roxie rossa.otf") format("opentype"),
-				url("/fonts/Roxie rossa.woff") format("woff"),
-				url("/fonts/Roxie rossa.ttf") format("truetype");
+				url("/fonts/Roxie rossa.woff") format("woff");
+		}
+
+		@font-face {
+			font-family: "Lora";
+			src: url("/fonts/Lora-VariableFont_wght.ttf") format("truetype");
+		}
+
+		@font-face {
+			font-family: "Montserrat";
+			src: url("/fonts/Montserrat-VariableFont_wght.ttf") format("truetype");
 		}
 
 		:root {
@@ -71,14 +81,12 @@ import MouseFollower from "../components/decorations/MouseFollower.astro";
 			--secondary-text-color: #7ab2df;
 			--secondary-gray: #d1d6d8;
 
-			--tertiary-color: #aa4935;
+			--tertiary-color: #743131;
 			--tertiary-text-color: #ececec;
 			--tertiary-gray: #eeece8d2;
 
-			--background-1: #ffffff;
-			--background-2: #cddacd;
 			--text-color: #111;
-			--text-color-bright: #f5f3eb;
+			--gray: #c9c9c9;
 			--line-width: 0.07rem;
 		}
 
@@ -95,7 +103,7 @@ import MouseFollower from "../components/decorations/MouseFollower.astro";
 
 		body {
 			color: var(--text-color);
-			background: var(--background-1);
+			background: white;
 			background-repeat: no-repeat;
 			background-size: cover;
 			font-family: "Montserrat", sans-serif;

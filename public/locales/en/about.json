@@ -6,23 +6,33 @@
         "scroll-cta": "Scroll down to discover more about me!"
     },
     "profile": {
+        "ageTitle": "Age",
+        "occupationTitle": "Occupation",
         "occupation": "Student at EPITA",
+        "locationTitle": "Location",
         "location": "Strasbourg, France",
-        "email": "an.blumenroeder@gmail.com"
+        "mailTitle": "Mail",
+        "mail": "an.blumenroeder@gmail.com"
     },
     "personnality": {
-        "title-1": "I am...",
+        "title-1": "I am",
         "adjectives": {
             "1": "curious",
             "2": "determined",
             "3": "passionate",
             "4": "serious"
         },
-        "title-2": "I can...",
+        "title-2": "I know how to",
         "skills": {
-            "1": "adapt to new situations",
-            "2": "speak French, English and German",
-            "3": "solve your problem"
+            "1": "adapt",
+            "2": "be meticulous",
+            "3": "innovate"
+        },
+        "title-3": "I love",
+        "passions": {
+            "1": "programming",
+            "2": "creating",
+            "3": "nature"
         }
     }
 }
