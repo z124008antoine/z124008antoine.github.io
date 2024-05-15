@@ -1,0 +1,25 @@
+---
+title: Pipe Length Calculator
+cover: ../../assets/pipe-tool/chart.png
+coverAlt: Chat showing values with color coding the errors
+description: I created a tool that makes it easier to calculate the length of a pipe. It is used in the real world almost everyday by my father's company.
+relevance: 55
+group-size: 1
+begin-date: 2021-12-10
+end-date: 2022-01-05
+link: http://blumenroeder.fr/tuyaux/
+---
+
+import { Image } from 'astro:assets';
+
+The pipe organ building company *Manufacture Quentin Blumenroeder* needed a tool to calculate the length of a pipe. The tool had to be easy to use and to understand. The tool is used by the employees of the company to calculate the length of pipes when building a new organ. They were using a spreadsheet before, but it was not user-friendly and was not advanced enough.
+
+The tool is a web application that I made hosted alongside the company's website. The purpose is to calculate the lengths for a set of pipes with settings like what is called a temperament. Other real-world errors are also taken into account. It can also be used to compare measured data with theoratical results in order to find what temperament an organ might be based on. My father was very happy with the result and the tool is now used almost everyday by the company and has saved a lot of time.
+
+import ui from '../../assets/pipe-tool/ui.png';
+import report from '../../assets/pipe-tool/report.png';
+
+<Image src={ui} alt="User interface of the Pipe Length Calculator" />
+<Image src={report} alt="Report of the Pipe Length Calculator" />
+
+This project might be small but it's one of my favorites! It was stimulating to do the research on the maths behind music but it was also a good challenge to translate the needs of someone who doesn't know anything about programming into a tool that is easy to use and understand.

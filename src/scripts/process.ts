@@ -92,22 +92,42 @@ document.addEventListener('astro:page-load', () => {
             tl.to(`#cog-${index+1}`, { ...position }, index === 0 ? '>+.25' : '<');
         });
     }
-    registerCogConfig([
-        { left: '-2rem', top: '3rem' },
-        { left: '1rem', top: '1rem' },
-        { left: '6.3rem', top: '-2.8rem' },
-        { right: '-0.4rem', bottom: '-0.7rem' },
-        { right: '-1.5rem', bottom: '3.5rem' },
-        { right: '-0.5rem', top: '-1rem' },
+    /*
+    #cog-1 { left: -2.8rem; top: 2.8rem; }
+    #cog-2 { left: -.8rem; top: -2.3rem; }
+    #cog-3 { left: 4.5rem; top: -5rem; }
+    
+    #cog-4 { right: 4.2rem; bottom: -2.9rem; }
+    #cog-5 { right: 0.3rem; bottom: -1.7rem; }
+
+    #cog-6 { right: -2rem; top: 2rem; }
+    */
+   registerCogConfig([
+        { left: '-2.8rem', top: '2.8rem' },
+        { left: '-.8rem', top: '-2.3rem' },
+        { left: '4.5rem', top: '-5rem' },
+        { right: '4.2rem', bottom: '-2.9rem' },
+        { right: '0.3rem', bottom: '-1.7rem' },
+        { right: '-2rem', top: '2rem' },
     ]);
     tl.to('.project-box button', { x: 70, y: -20 }, '<');
+    /*
+    #cog-1 { left: -2.8rem; top: -4rem; }
+    #cog-2 { left: -5rem; top: -2.3rem; }
+    #cog-3 { left: -2rem; top: -5rem; }
+    
+    #cog-4 { right: 0.3rem; bottom: -2.7rem; }
+    #cog-5 { right: 4.7rem; bottom: -1.9rem; }
+
+    #cog-6 { right: -2.8rem; top: 2rem; }
+    */
     registerCogConfig([
-        { left: '2.8rem', top: '10rem' },
-        { left: '-1rem', top: '6rem' },
-        { left: '-2rem', top: '-0.8rem' },
-        { right: '-1rem', bottom: '2.8rem' },
-        { right: '1rem', bottom: '-0.7rem' },
-        { right: '2rem', top: '-1rem' },
+        { left: '-2.8rem', top: '-4rem' },
+        { left: '-5rem', top: '-2.3rem' },
+        { left: '-2rem', top: '-5rem' },
+        { right: '0.3rem', bottom: '-2.7rem' },
+        { right: '4.7rem', bottom: '-1.9rem' },
+        { right: '-2.8rem', top: '2rem' },
     ]);
     tl.to('.project-box button', { x: -50, y: 0 }, '<');
     

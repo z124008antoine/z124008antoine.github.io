@@ -3,6 +3,7 @@ import { changeLanguage, setDefaultNamespace } from "i18next";
 import MainPage from "../layouts/MainPage.astro";
 import ProfileCard from "../components/about/ProfileCard.astro";
 import PersonnalityCard from "../components/about/PersonnalityCard.astro";
+import Cursus from "../components/about/Cursus.astro";
 
 changeLanguage("en");
 
@@ -18,7 +19,7 @@ setDefaultNamespace("about");
             <PersonnalityCard />
         </div>
     </main>
-    
+    <Cursus/>
 </MainPage>
 
 <style>
@@ -39,7 +40,7 @@ setDefaultNamespace("about");
         width: 100%;
     }
 
-    @media screen and (min-width: 768px){
+    @media screen and (min-width: 1000px){
         main {
             flex-direction: row;
         }
