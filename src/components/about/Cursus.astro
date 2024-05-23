@@ -20,7 +20,7 @@ for (let i = 0; i <= 200; i++) {
 }
 
 const experiences = await getCollection("experience");
-const sortedExperiences = experiences.sort((a, b) => a.start > b.start ? 1 : -1);
+const sortedExperiences = experiences.sort((a, b) => a.data.start > b.data.start ? 1 : -1);
 ---
 
 <div class="cursus">
@@ -30,7 +30,24 @@ const sortedExperiences = experiences.sort((a, b) => a.start > b.start ? 1 : -1)
         <path d={`M 0 ${pathHeight} L ${pathWidth} ${pathHeight}`} />
     </svg>
     <div class="experiences" style={{height: pathHeight + "px"}}>
-
+        {sortedExperiences.map((experience, i) => {
+            const percent = i / (sortedExperiences.length - 1);
+            const { x, y } = getCurvedPosition(percent);
+            const start = new Date(experience.data.start).toLocaleDateString();
+            const end = experience.data.end ? new Date(experience.data.end).toLocaleDateString() : "now";
+            const lineLength = 100 - x;
+            return (
+                <div class="experience">
+                    <div class="line" style={`left: ${x}px; top: ${y}px; width: ${lineLength}`} />
+                    <div class="circle" style={`left: ${x}px; top: ${y}px`} />
+                    <div class="content" style={`top: ${y - 16}px`}>
+                        <h3>{experience.data.title}</h3>
+                        <p>{start} - {end}</p>
+                        <p>{experience.data.description}</p>
+                    </div>
+                </div>
+            )
+        })}
     </div>
 </div>
 
@@ -44,6 +61,33 @@ const sortedExperiences = experiences.sort((a, b) => a.start > b.start ? 1 : -1)
     svg {
         fill: none;
         stroke: black;
-        stroke-width: var(--line-width)
+        stroke-width: var(--line-width);
+        position: absolute;
     }
+
+    .experiences {
+        position: relative;
+    }
+
+    .line {
+        position: absolute;
+        height: 1px;
+        background-color: black;
+    }
+
+    .circle {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background-color: black;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .content {
+        position: absolute;
+        left: 100px;
+        max-width: 20rem;
+    }
+    
 </style>
