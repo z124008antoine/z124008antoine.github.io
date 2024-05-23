@@ -1,1 +1,49 @@
-<!-- TODO -->
+---
+import { getCollection } from "astro:content";
+
+const pathHeight = 500;
+const pathWidth = 30;
+let path = `M ${pathWidth/2} 0`;
+
+const curveness = 50;
+const getCurvedPosition = (percent: number) => {
+    return {
+        x: 0.6*pathWidth*(Math.sin(percent*curveness) * 0.5 + 0.5),
+        y: pathHeight * percent
+    }
+}
+
+// sinusoide shape
+for (let i = 0; i <= 200; i++) {
+    const { x, y } = getCurvedPosition(i / 200);
+    path += " L " + x + " " + y;
+}
+
+const experiences = await getCollection("experience");
+const sortedExperiences = experiences.sort((a, b) => a.start > b.start ? 1 : -1);
+---
+
+<div class="cursus">
+    <svg width={pathWidth+4} height={pathHeight} viewBox={`-2 0 ${pathWidth+2} ${pathHeight}`} xmlns="http://www.w3.org/2000/svg">
+        <path d={`M 0 0 L ${pathWidth} 0`} />
+        <path d={path} />
+        <path d={`M 0 ${pathHeight} L ${pathWidth} ${pathHeight}`} />
+    </svg>
+    <div class="experiences" style={{height: pathHeight + "px"}}>
+
+    </div>
+</div>
+
+<style>
+    .cursus {
+        max-width: 50rem;
+        margin: auto;
+        padding: 1rem;
+    }
+
+    svg {
+        fill: none;
+        stroke: black;
+        stroke-width: var(--line-width)
+    }
+</style>

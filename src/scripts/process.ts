@@ -1,6 +1,8 @@
 import TextPlugin from "gsap/TextPlugin";
-
 document.addEventListener('astro:page-load', () => {
+    if (!document.querySelector('.project-box'))
+        return;
+    
     gsap.registerPlugin(TextPlugin);
 
     const largeScreen = () => window.matchMedia('(min-width: 1100px)').matches;

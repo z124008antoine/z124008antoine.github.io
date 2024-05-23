@@ -9,10 +9,19 @@ const projectCollection = defineCollection({
     coverAlt: z.string(),
     relevance: z.number().int().min(0).max(100),
     description: z.string(),
-    //coverAlt: z.string(),
+  }),
+});
+
+const experienceCollection = defineCollection({
+  schema: () => z.object({
+    title: z.string(),
+    start: z.date(),
+    end: z.date().optional(),
+    description: z.string(),
   }),
 });
 
 export const collections = {
   project: projectCollection,
+  experience: experienceCollection,
 };
