@@ -4,6 +4,7 @@ import MainPage from "../layouts/MainPage.astro";
 import ProfileCard from "../components/about/ProfileCard.astro";
 import PersonnalityCard from "../components/about/PersonnalityCard.astro";
 import Cursus from "../components/about/Cursus.astro";
+import Skills from "../components/about/Skills.astro";
 
 changeLanguage("en");
 
@@ -11,19 +12,26 @@ setDefaultNamespace("about");
 ---
 
 <MainPage>
-    <main id="contact">
+    <section id="first-section">
         <div class="left">
             <ProfileCard />
         </div>
         <div class="right">
             <PersonnalityCard />
         </div>
-    </main>
-    <Cursus/>
+    </section>
+    <section id="second-section">
+        <div class="left">
+            <Skills />
+        </div>
+        <div class="right">
+            <Cursus/>
+        </div>
+    </section>
 </MainPage>
 
 <style>
-    main {
+    section {
         display: flex;
         flex-direction: column;
     }
@@ -38,11 +46,15 @@ setDefaultNamespace("about");
     }
     .right {
         width: 100%;
+        background-color: white;
     }
 
     @media screen and (min-width: 1000px){
-        main {
+        section {
             flex-direction: row;
+        }
+        #second-section {
+            flex-flow: row-reverse;
         }
         .left, .right {
             height: 100vh;

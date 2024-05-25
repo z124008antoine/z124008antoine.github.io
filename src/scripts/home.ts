@@ -1,5 +1,8 @@
 document.addEventListener('astro:page-load', () => {
     const titles = gsap.utils.toArray(".project-title");
+    if (titles.length === 0)
+        return;
+
     titles.forEach((title) => {
         const t = title as HTMLElement;
         gsap.from(t, {
