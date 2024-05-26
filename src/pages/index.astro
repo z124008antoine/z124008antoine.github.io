@@ -7,6 +7,7 @@ import { Image } from "astro:assets";
 changeLanguage("en");
 
 setDefaultNamespace("home");
+
 const projects = await getCollection("project");
 projects.sort((a, b) => b.data.relevance - a.data.relevance);
 ---
@@ -47,9 +48,6 @@ projects.sort((a, b) => b.data.relevance - a.data.relevance);
 	h2 {
         color: var(--primary-text-color);
         margin: 1rem .5rem 0 .5rem;
-        font-size: 3rem;
-        font-weight: 400;
-        font-family: "Roxie Rossa", serif;
         width: fit-content;
         padding: .25rem 1rem;
     }

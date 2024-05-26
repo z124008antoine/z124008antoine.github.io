@@ -27,7 +27,7 @@ for (let i = 0; i <= 100 * experiences.length; i++) {
 <h2>Cursus</h2>
 <div class="cursus">
     <svg width={pathWidth+4} height={pathHeight} viewBox={`-2 0 ${pathWidth+2} ${pathHeight}`} xmlns="http://www.w3.org/2000/svg">
-        <path d={path} />
+        <path class="curve" d={path} />
     </svg>
     <div class="experiences" style={{height: pathHeight + "px"}}>
         {sortedExperiences.map((experience, i) => {
@@ -56,11 +56,16 @@ for (let i = 0; i <= 100 * experiences.length; i++) {
 </script>
 
 <style>
+    h2 {
+        text-align: center;
+        margin: 3rem 0;
+    }
     .cursus {
         max-width: 30rem;
         margin: auto;
         padding: 1rem;
-        margin: 30vh 0;
+        margin-bottom: 40vh;
+        margin-top: 20vh;
     }
 
     svg {
