@@ -28,6 +28,7 @@ const { Content } = await entry.render();
     <div class="blog-body">
 		<h1 transition:name={`${entry.slug} title`}>{entry.data.title}</h1>
         <div class="blog-grid">
+            <!-- Image transition with the cover in index -->
             <Image src={entry.data.cover} alt={entry.data.coverAlt} transition:name={`${entry.slug} cover`} />
             <Content />
         </div>

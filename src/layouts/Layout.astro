@@ -1,7 +1,10 @@
 ---
+// SPA functionalities
 import { ViewTransitions } from "astro:transitions";
+// internationalization
 import i18next from "i18next";
 import { HeadHrefLangs } from "astro-i18next/components";
+// components
 import NavBar from "../components/NavBar.astro";
 import Scroll from "../components/Scroll.astro";
 import MouseFollower from "../components/decorations/MouseFollower.astro";
@@ -13,7 +16,7 @@ import MouseFollower from "../components/decorations/MouseFollower.astro";
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<slot name="head" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/png" href="/favicon.png" />
 		<meta name="generator" content={Astro.generator} />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

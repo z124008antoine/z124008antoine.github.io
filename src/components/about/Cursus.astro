@@ -1,9 +1,11 @@
 ---
 import { getCollection } from "astro:content";
 
+// get all experiences and sort them by start date
 const experiences = await getCollection("experience");
 const sortedExperiences = experiences.sort((a, b) => a.data.start < b.data.start ? 1 : -1);
 
+// get data for the curved path
 const pathHeight = 250 * experiences.length;
 const pathWidth = 30;
 
@@ -29,6 +31,7 @@ for (let i = 0; i <= 100 * experiences.length; i++) {
     <svg width={pathWidth+4} height={pathHeight} viewBox={`-2 0 ${pathWidth+2} ${pathHeight}`} xmlns="http://www.w3.org/2000/svg">
         <path class="curve" d={path} />
     </svg>
+    <!-- experiences -->
     <div class="experiences" style={{height: pathHeight + "px"}}>
         {sortedExperiences.map((experience, i) => {
             const percent = i / (sortedExperiences.length - 1);

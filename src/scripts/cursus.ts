@@ -8,7 +8,7 @@ document.addEventListener('astro:page-load', () => {
             scrollTrigger: {
                 trigger: '#first-section',
                 start: 'top top',
-                end: () => `+=${document.querySelector('.cursus')?.clientHeight || 0}`,
+                end: 'top -100%',
                 pin: true,
                 pinSpacing: false,
             }
