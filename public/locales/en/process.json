@@ -8,6 +8,7 @@
     "general": {
         "project": "Project",
         "projectBtn": "Launch",
+        "end-title": "Ready?",
         "end-text": "Let's build this together!",
         "end-cta": "Contact me"
     },
@@ -26,7 +27,7 @@
     },
     "step-4": {
         "title": "Design",
-        "texts": "<p>I'm french, I love bold cuisine.</p><p>I'm not trying to make it good for everyone.</p><p>I want to make it <em>perfect</em> for the <strong>right</strong> people.</p>"
+        "texts": "<p>I'm french, I love <strong>bold</strong> cuisine.</p><p>I'm not trying to make it good for everyone.</p><p>I want to make it <em>perfect</em> for the <strong>right</strong> people.</p>"
     },
     "step-5": {
         "title": "Development",

@@ -8,7 +8,8 @@
     
         const mouseDot = document.querySelector('.mouse-dot') as HTMLElement;
         let mouseDotVisible = false;
-        document.addEventListener('mousemove', (e) => {
+
+        const onMove = (e: MouseEvent) => {
             if (!mouseDotVisible)
             {
                 mouseDotVisible = true;
@@ -23,9 +24,9 @@
                 });
                 mouseDotVisible = true;
             }
-        });
+        };
+        document.addEventListener('mousemove', onMove);
     });
-
 </script>
 
 <style>

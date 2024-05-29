@@ -1,0 +1,36 @@
+<canvas id="tree-canvas" width="1000" height="1520"></canvas>
+
+<script>
+    import { DotLottie } from '@lottiefiles/dotlottie-web';
+
+    let dotLottie: DotLottie;
+    const percent = () => window.scrollY / (document.body.scrollHeight - window.innerHeight);
+    let nbFrames = 0;
+    const onScroll =  () => {
+        dotLottie.setFrame(percent() * nbFrames);
+    }
+
+    document.addEventListener('astro:page-load', () => {
+        const canvas = document.querySelector('#tree-canvas') as HTMLCanvasElement;
+        if (!canvas) return;
+        dotLottie = new DotLottie({
+            canvas,
+            src: "/animations/myTree.lottie",
+        });
+        dotLottie.addEventListener("load", () => {
+            nbFrames = dotLottie.totalFrames;
+            onScroll();
+            window.addEventListener('scroll', onScroll);
+        });
+    });
+</script>
+
+<style>
+    #tree-canvas {
+        position: fixed;
+        bottom: -9vw;
+        right: 0;
+        width: 40vw;
+        height: auto;
+    }
+</style>

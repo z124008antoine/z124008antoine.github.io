@@ -26,6 +26,8 @@ const { Content } = await entry.render();
 
 <Layout>
     <div class="blog-body">
+        <!-- Go back button -->
+        <button class="back-button" onclick="window.history.back()">← Go back</button>
 		<h1 transition:name={`${entry.slug} title`}>{entry.data.title}</h1>
         <div class="blog-grid">
             <!-- Image transition with the cover in index -->
@@ -47,6 +49,17 @@ const { Content } = await entry.render();
 
 
 <style>
+    .back-button {
+        background-color: var(--primary-color);
+        color: var(--primary-text-color);
+        border: none;
+        margin-top: 5rem;
+        margin-left: 2rem;
+        font-size: 1.4rem;
+        cursor: pointer;
+        font-family: 'Lora', serif;
+    }
+
 	.blog-body {
         background-color: var(--primary-color);
 		padding: 3rem 0 10rem 0;
@@ -54,6 +67,7 @@ const { Content } = await entry.render();
     h1 {
         color: var(--primary-text-color);
         margin: 5rem auto;
+        margin-top: 0;
         margin-bottom: 8rem;
         font-size: 3rem;
         font-weight: 400;

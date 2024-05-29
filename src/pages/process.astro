@@ -3,7 +3,7 @@ import { changeLanguage, setDefaultNamespace, t } from "i18next";
 import { localizePath } from "astro-i18next";
 import MainPage from "../layouts/MainPage.astro";
 import Separator from "../components/decorations/Separator.astro";
-import Cogs from "../components/decorations/Cogs.astro";
+import Tree from "../components/process/Tree.astro";
 
 changeLanguage("en");
 
@@ -11,74 +11,60 @@ setDefaultNamespace("process");
 ---
 
 <MainPage>
-    <div id="process-container">
-        <div id="project-box-wrap">
-            <div class="project-box" slot="before-main">
-                <div class="eater" />
-                <Cogs />
-        
-                <div class="style" />
-        
-                <div class="drop" style="background-color: rgb(253, 220, 29); color:rgb(0, 0, 0);" />
-                <div class="drop" style="background-color: rgb(51, 51, 51); color:rgb(247, 129, 217);" />
-                <div class="drop" style="background-color: var(--secondary-color); color: var(--secondary-gray);" />
+    <main>
+        <section class="process-section">
+            <h2 id="step-1">{t('step-1.title')}</h2>
+            <Fragment set:html={t('step-1.texts')} />
+            <Separator />
+        </section>
+    
+    
+        <section class="process-section">
+            <h2 id="step-2" data-text-change={`${t('step-2.text-change')}`}>
+                {t('step-2.title')}
+            </h2>
+            <Fragment set:html={t('step-2.texts')} />
+            <Separator />
+        </section>
+    
+    
+        <section class="process-section">
+            <h2 id="step-3">
+                {t('step-3.title')}
+            </h2>
+            <Fragment set:html={t('step-3.texts')} />
+            <Separator />
+        </section>
+    
+    
+        <section class="process-section">
+            <h2 id="step-4">
+                {t('step-4.title')}
+            </h2>
+            <Fragment set:html={t('step-4.texts')} />
+            <Separator />
+        </section>
+    
+    
+        <section class="process-section">
+            <h2 id="step-5">
+                {t('step-5.title')}
+            </h2>
+            <Fragment set:html={t('step-5.texts')} />
+        </section>
+    
+        <Separator />
 
-        
-                <p class="display">{t('general.project')}</p>
-                <button>{t('general.projectBtn')}</button>
-        
-                <div class="end-text">
-                    <p>{t('general.end-text')}</p>
-                    <a href={localizePath('/about#contact')}>{t('general.end-cta')}</a>
-                </div>
-            </div>
-        </div>
-
-        <main>
-            <section class="process-section">
-                <h2 id="step-1">{t('step-1.title')}</h2>
-                <Fragment set:html={t('step-1.texts')} />
-                <Separator />
-            </section>
-        
-        
-            <section class="process-section">
-                <h2 id="step-2" data-text-change={`${t('step-2.text-change')}`}>
-                    {t('step-2.title')}
-                </h2>
-                <Fragment set:html={t('step-2.texts')} />
-                <Separator />
-            </section>
-        
-        
-            <section class="process-section">
-                <h2 id="step-3">
-                    {t('step-3.title')}
-                </h2>
-                <Fragment set:html={t('step-3.texts')} />
-                <Separator />
-            </section>
-        
-        
-            <section class="process-section">
-                <h2 id="step-4">
-                    {t('step-4.title')}
-                </h2>
-                <Fragment set:html={t('step-4.texts')} />
-                <Separator />
-            </section>
-        
-        
-            <section class="process-section">
-                <h2 id="step-5">
-                    {t('step-5.title')}
-                </h2>
-                <Fragment set:html={t('step-5.texts')} />
-            </section>
-        
-            <div class="process-end" />
-        </main>
-    </div>
+        <section class="process-section">
+            <h2 id="step-6">
+                {t('general.end-title')}
+            </h2>
+            <p>{t('general.end-text')}</p>
+            <p><a href={localizePath('/about')}>{t('general.end-cta')}</a></p>
+        </section>
+    </main>
+    <Tree />
+    <script>import '../scripts/process';</script>
 </MainPage>
 
 <script>
@@ -86,94 +72,11 @@ setDefaultNamespace("process");
 </script>
 
 <style>
-    #process-container {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-    }
     main {
-        background-color: var(--secondary-color);
-        --text-color: var(--secondary-gray);
+        background-color: var(--primary-color);
+        --text-color: var(--primary-gray);
         width: 100%;
-    }
-    #project-box-wrap {
-        position: relative;
-        width: 100%;
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        background-color: var(--secondary-color);
-    }
-	.project-box {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 20rem;
-        height: 12rem;
-        max-height: unset !important;
-        max-width: unset !important;
-        margin: 15vh 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        z-index: 2;
-        overflow: hidden;
-        border: solid var(--line-width) var(--text-color);
-    }
-    .eater {
-        position: absolute;
-        top: -10rem;
-        height: calc(100% + 10rem);
-        width: 200vw;
-        /* When things don't have time to disappear, they will thanks to that eater */
-        background: linear-gradient(180deg, var(--secondary-color) 10rem, #ffffff00);
-        z-index: 0;
-    }
-    .project-box .style {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        z-index: 0;
-        background-color: white;
-    }
-    .project-box .display {
-        margin-top: 3rem;
-        font-size: 1.5rem;
-        z-index: 2;
-        text-align: center;
-    }
-    .end-text {
-        z-index: 2;
-        margin-top: 2rem;
-        font-weight: 500;
-        font-size: 1.2rem;
-        text-align: center;
-    }
-    :global(.end-text a) {
-        color: inherit;
-    }
-    .project-box button {
-        box-sizing: content-box;
-        z-index: 2;
-        font-size: 1.3rem;
-        margin-top: 2rem;
-        font-family: inherit;
-        padding: 0.5rem 1rem;
-        border: solid 1px black;
-        border-radius: 0;
-        background-color: white;
-    }
-
-    .drop {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        width: 1rem;
-        height: 1rem;
-        border-radius: 50%;
-        z-index: 1;
-        border: var(--line-width) solid var(--text-color);
+        padding: 20vh 0;
     }
 
     .process-section {
@@ -190,37 +93,22 @@ setDefaultNamespace("process");
         text-align: center;
         font-weight: 400;
         font-family: "Roxie Rossa", serif;
-        color: var(--secondary-text-color);
+        color: var(--primary-text-color);
     }
 
     :global(.process-section p) {
+        font-weight: 300;
         font-size: 1.5rem;
         line-height: 1.5;
         max-width: 20rem;
         margin: 0 auto;
         margin-top: 5rem;
         text-align: center;
-        color: var(--secondary-gray);
+        color: var(--primary-gray);
     }
 
     @media screen and (min-width: 1100px){
-        #process-container {
-            flex-direction: row-reverse;
-            align-items: flex-start;
-            justify-content: flex-end;
-        }
-        #project-box-wrap {
-            width: 40%;
-            background: none;
-        }
-        .project-box {
-            margin-top: 30vh;
-        }
-        .eater {
-            display: none;
-        }
         main {
-            padding-top: 60vh;
             width: 60%;
         }
         h2 {
@@ -232,9 +120,5 @@ setDefaultNamespace("process");
             margin-top: 8rem;
             font-size: 2rem;
         }
-    }
-
-    .process-end {
-        height: 50vh;
     }
 </style>
