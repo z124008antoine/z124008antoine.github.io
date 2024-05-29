@@ -15,9 +15,11 @@ projects.sort((a, b) => b.data.relevance - a.data.relevance);
 <MainPage>
     <main>
         <section class="projects">
+            <!-- Loop through all the projects and return all the cards -->
             {projects.map((project) => (
                 <a class="project-card" href={`/project/${project.slug}`}>
                     <div class="project-cover-wrap">
+                        {/* Display the cover image of the project and connect the view transition based on the slug */}
                         <Image src={project.data.cover} alt={project.data.title} class="project-cover" transition:name={`${project.slug} cover`} />
                     </div>
                     <h2 class="project-title" transition:name={`${project.slug} title`}>{project.data.title}</h2>
