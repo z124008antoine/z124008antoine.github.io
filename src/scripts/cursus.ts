@@ -33,6 +33,7 @@ document.addEventListener('astro:page-load', () => {
     update();
     window.addEventListener('resize', update);
 
+    // animations for the cursus
     const experiences = gsap.utils.toArray('.experience');
     const curve = document.querySelector('.curve') as SVGPathElement;
     const length = curve.getTotalLength();
@@ -53,6 +54,7 @@ document.addEventListener('astro:page-load', () => {
         });
 
         if (index !== 0)
+            // draw the curve
             tl.fromTo(curve, {
                 strokeDasharray: length,
                 strokeDashoffset: length * (experiences.length - index + 1)/experiences.length,
@@ -62,15 +64,19 @@ document.addEventListener('astro:page-load', () => {
                 immediateRender: false,
                 ease: 'power1.inOut',
             });
+
+        // scale the circle
         tl.from(circle, {
             height: 0,
             width: 0,
             duration: 0.2,
         })
+        // draw the line
         .from(line, {
             width: 0,
             duration: 0.3,
         }, '>')
+        // show the content with fade in and move from the right
         .from(content, {
             x: 20,
             opacity: 0,

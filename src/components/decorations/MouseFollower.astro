@@ -12,10 +12,12 @@
         const onMove = (e: MouseEvent) => {
             if (!mouseDotVisible)
             {
+                // Show the mouse dot
                 mouseDotVisible = true;
                 mouseDot.style.opacity = '1';
             }
             if (mouseDotVisible) {
+                // Move the mouse dot
                 gsap.to(mouseDot, {
                     x: e.clientX,
                     y: e.clientY,
@@ -42,6 +44,7 @@
         border-radius: 50%;
         pointer-events: none;
         transform: translate(-50%, -50%);
+        /* make the dot invert the background */
         backdrop-filter: invert(1);
         transition: opacity 0.3s;
         z-index: 4;

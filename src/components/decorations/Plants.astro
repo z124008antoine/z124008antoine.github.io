@@ -34,6 +34,7 @@ const positions: { src: ImageMetadata, style: string, className: string }[] = [
 ]
 ---
 
+{/* generate the right html for each plant */}
 {positions.map(({ src, style, className }) => (
     <Image
         src={src}
@@ -47,6 +48,7 @@ const positions: { src: ImageMetadata, style: string, className: string }[] = [
     document.addEventListener('astro:page-load', () => {
         if (!document.querySelector('header')) return;
 
+        // Rotating animations for plants, synchronized with scroll
         const scrollTrigger = {
             trigger: 'header',
             start: 'top 80',

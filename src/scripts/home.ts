@@ -3,6 +3,7 @@ document.addEventListener('astro:page-load', () => {
     if (titles.length === 0)
         return;
 
+    // animate the titles to pop in
     titles.forEach((title) => {
         const t = title as HTMLElement;
         gsap.from(t, {
@@ -17,6 +18,7 @@ document.addEventListener('astro:page-load', () => {
         });
     });
 
+    // animate the covers to move
     const covers = gsap.utils.toArray(".project-cover");
     covers.forEach((cover) => {
         const c = cover as HTMLElement;

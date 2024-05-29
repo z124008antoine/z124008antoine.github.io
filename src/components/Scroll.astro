@@ -1,16 +1,19 @@
 <script>
+    // code for smooth scroll with lenis
     import Lenis from '@studio-freight/lenis';
     const lenis = new Lenis();
     window.lenis = lenis;
     lenis.on('scroll', ScrollTrigger.update);
 
+    // connect lenis to gsap
     gsap.ticker.add((time)=>{
         lenis.raf(time * 1000);
     })
 
     gsap.ticker.lagSmoothing(0);
 
+    // scroll to top on page change
     document.addEventListener('astro:before-swap', () => {
         lenis.scrollTo(0, { immediate: true });
-    })
+    });
 </script>

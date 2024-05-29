@@ -76,13 +76,12 @@ import MouseFollower from "../components/decorations/MouseFollower.astro";
 		}
 
 		:root {
+			/* colors */
+			/* first is background, second is to stand out, third is text */
+
 			--primary-color: #3e503a;
 			--primary-text-color: #cfdf7a;
 			--primary-gray: #d2d8d1;
-
-			--secondary-color: #363b53;
-			--secondary-text-color: #7ab2df;
-			--secondary-gray: #d1d6d8;
 
 			--tertiary-color: #743131;
 			--tertiary-text-color: #fffefed7;
@@ -90,6 +89,7 @@ import MouseFollower from "../components/decorations/MouseFollower.astro";
 
 			--text-color: #111;
 			--gray: #c9c9c9;
+			/* every line is based on this to have consistency */
 			--line-width: 0.07rem;
 		}
 
@@ -133,6 +133,7 @@ import MouseFollower from "../components/decorations/MouseFollower.astro";
 			font-weight: 400;
 		}
 
+		/* container for the library medium-zoom */
 		#zoom-container {
 			position: fixed;
 			top: 0;
@@ -144,6 +145,7 @@ import MouseFollower from "../components/decorations/MouseFollower.astro";
 			z-index: 1000;
 		}
 
+		/* styles for the library medium-zoom */
 		.medium-zoom-image--opened {
 			position: relative;
 			cursor: pointer;
@@ -171,22 +173,19 @@ import MouseFollower from "../components/decorations/MouseFollower.astro";
 			will-change: opacity;
 		}
 
+		/* styles for the library lenis */
 		html.lenis, html.lenis body {
 			height: auto;
 		}
-
 		.lenis.lenis-smooth {
 			scroll-behavior: auto !important;
 		}
-
 		.lenis.lenis-smooth [data-lenis-prevent] {
 			overscroll-behavior: contain;
 		}
-
 		.lenis.lenis-stopped {
 			overflow: hidden;
 		}
-
 		.lenis.lenis-scrolling iframe {
 			pointer-events: none;
 		}

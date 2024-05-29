@@ -1,3 +1,4 @@
+// this animation is used for the tiles in the headers
 const slideAnim = (duration: number, toRight: boolean) => {
     return {
         forwards: {

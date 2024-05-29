@@ -10,6 +10,8 @@ const pathHeight = 250 * experiences.length;
 const pathWidth = 30;
 
 const curveness = 20 * experiences.length;
+// math function to map a percent to a curved position
+// this doesn't affect performance as it's generated at build time
 const getCurvedPosition = (percent: number) => {
     return {
         x: 0.6*pathWidth*(Math.sin(percent*curveness) * 0.5 + 0.5),
@@ -17,7 +19,7 @@ const getCurvedPosition = (percent: number) => {
     }
 }
 
-// sinusoide shape
+// sinusoidal path using SVG path
 const start = getCurvedPosition(0);
 let path = "M " + start.x + " " + start.y;
 for (let i = 0; i <= 100 * experiences.length; i++) {
@@ -29,16 +31,19 @@ for (let i = 0; i <= 100 * experiences.length; i++) {
 <h2>Cursus</h2>
 <div class="cursus">
     <svg width={pathWidth+4} height={pathHeight} viewBox={`-2 0 ${pathWidth+2} ${pathHeight}`} xmlns="http://www.w3.org/2000/svg">
+        <!-- curved path -->
         <path class="curve" d={path} />
     </svg>
     <!-- experiences -->
     <div class="experiences" style={{height: pathHeight + "px"}}>
         {sortedExperiences.map((experience, i) => {
             const percent = i / (sortedExperiences.length - 1);
+            // get the position on the curved path
             const { x, y } = getCurvedPosition(percent);
             const start = new Date(experience.data.start).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
             const end = experience.data.end ? new Date(experience.data.end).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }) : "today";
             const lineLength = 70 - x;
+            // make the experience line and dot positioned on the path
             return (
                 <div class="experience">
                     <div class="line" style={`left: ${x}px; top: ${y}px; width: ${lineLength}px;`} />

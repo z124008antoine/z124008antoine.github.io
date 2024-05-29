@@ -10,9 +10,9 @@ import profile from "../../assets/face.jpg";
     </div>
     <div class="info">
         <p class="name">Antoine Blumenroeder</p>
-        <!-- Auto updating age -->
         <ul>
             <span class="profile-pre">{t('profile.ageTitle')}</span><li id="age"></li>
+            <!-- Auto updating age -->
             <script is:inline data-astro-rerun>
                 var birthDate = new Date("2004-10-07");
                 var age = Math.floor((new Date() - birthDate) / 31556952000);
